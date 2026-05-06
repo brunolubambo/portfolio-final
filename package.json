@@ -11,10 +11,15 @@
   },
   "dependencies": {
     "@nuxt/a11y": "^1.0.0-alpha.1",
+    "@nuxt/content": "^3.13.0",
     "@nuxt/eslint": "^1.15.2",
     "@nuxt/image": "^2.0.0",
+    "@nuxtjs/color-mode": "^4.0.0",
+    "@nuxtjs/sitemap": "^8.0.15",
+    "better-sqlite3": "^12.9.0",
     "eslint": "^10.3.0",
     "nuxt": "^4.4.4",
+    "nuxt-schema-org": "^6.0.4",
     "vue": "^3.5.33",
     "vue-router": "^5.0.6"
   },
