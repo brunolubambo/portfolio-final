@@ -3,7 +3,7 @@ const route = useRoute()
 const slug = route.params.slug as string
 
 const { data: project } = await useAsyncData(`work-${slug}`, () =>
-  queryCollection('work').where('slug', '==', slug).first()
+  queryCollection('work').where('slug', '=', slug).first()
 )
 
 if (!project.value) {
