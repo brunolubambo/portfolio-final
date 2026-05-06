@@ -14,6 +14,10 @@ useHead({
   title: `${project.value.title} — Bruno Lubambo`,
   meta: [
     { name: 'description', content: project.value.tagline },
+    { property: 'og:title', content: `${project.value.title} — Bruno Lubambo` },
+    { property: 'og:description', content: project.value.tagline },
+    { property: 'og:image', content: project.value.cover ?? '/og-image.jpg' },
+    { property: 'og:url', content: `/work/${slug}` },
   ],
 })
 </script>

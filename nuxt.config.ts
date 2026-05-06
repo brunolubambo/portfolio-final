@@ -27,4 +27,23 @@ export default defineNuxtConfig({
       },
     },
   },
+
+  site: {
+    url: 'https://brunolubambo.com',
+  },
+
+  nitro: {
+    prerender: {
+      failOnError: false,
+    },
+  },
+
+  sitemap: {
+    urls: [
+      '/',
+      '/work/harmonymind',
+      '/work/e-leve',
+      '/work/sigrh',
+    ],
+  },
 })
