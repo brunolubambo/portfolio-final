@@ -1,13 +1,14 @@
 <script setup lang="ts">
 useHead({
   htmlAttrs: { lang: 'en' },
-  titleTemplate: '%s — Bruno Lubambo',
+  titleTemplate: (title) => title?.endsWith('Bruno Lubambo') ? title : `${title} — Bruno Lubambo`,
   meta: [
-    { name: 'description', content: 'Product Designer at the intersection of design and engineering. Building accessible, high-impact digital products.' },
+    { name: 'description', content: 'Product Designer at the intersection of design and engineering. Portfolio of HarmonyMind, e-Leve and SIGRH.' },
     { property: 'og:site_name', content: 'Bruno Lubambo' },
     { property: 'og:type', content: 'website' },
     { property: 'og:image', content: '/og-image.jpg' },
     { name: 'twitter:card', content: 'summary_large_image' },
+    { name: 'theme-color', content: '#1E3A8A' },
   ],
   link: [
     { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
@@ -16,11 +17,10 @@ useHead({
   ],
 })
 
-// Schema.org Person
 useSchemaOrg([
   definePerson({
     name: 'Bruno Lubambo',
-    url: '/',
+    url: 'https://brunolubambo.com',
     email: 'brunolubambo@gmail.com',
     sameAs: ['https://www.linkedin.com/in/brunolubambo'],
     jobTitle: 'Product Designer',

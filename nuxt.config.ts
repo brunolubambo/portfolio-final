@@ -1,4 +1,6 @@
 export default defineNuxtConfig({
+  css: ['~/assets/css/portfolio.css'],
+
   compatibilityDate: '2024-11-01',
   devtools: { enabled: true },
 
@@ -28,8 +30,16 @@ export default defineNuxtConfig({
     },
   },
 
+  image: {
+    domains: ['images.unsplash.com'],
+    format: ['webp', 'jpg'],
+  },
+
   site: {
     url: 'https://brunolubambo.com',
+    name: 'Bruno Lubambo',
+    description: 'Product Designer at the intersection of design and engineering.',
+    defaultLocale: 'en',
   },
 
   nitro: {
@@ -41,9 +51,11 @@ export default defineNuxtConfig({
   sitemap: {
     urls: [
       '/',
+      '/about',
       '/work/harmonymind',
-      '/work/e-leve',
-      '/work/sigrh',
+      '/work/dead-space',
+      '/work/digital-key',
+      '/work/policia-civil',
     ],
   },
 })

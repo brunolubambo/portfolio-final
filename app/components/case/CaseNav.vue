@@ -5,8 +5,9 @@ const props = defineProps<{
 
 const projects = [
   { order: 1, slug: 'harmonymind', title: 'HarmonyMind' },
-  { order: 2, slug: 'e-leve', title: 'e-Leve' },
-  { order: 3, slug: 'sigrh', title: 'SIGRH' },
+  { order: 2, slug: 'dead-space', title: 'Dead Space — Diegetic UI' },
+  { order: 3, slug: 'digital-key', title: 'Digital Key' },
+  { order: 4, slug: 'policia-civil', title: 'Polícia Civil PB' },
 ]
 
 const prev = computed(() => projects.find(p => p.order === props.currentOrder - 1))
@@ -14,30 +15,34 @@ const next = computed(() => projects.find(p => p.order === props.currentOrder + 
 </script>
 
 <template>
-  <nav class="mx-auto max-w-5xl border-t border-[#2A2A2A] dark:border-[#2A2A2A] px-6 py-12">
-    <div class="flex items-center justify-between">
+  <nav class="case-nav" aria-label="Case study navigation">
+    <div class="case-nav-row">
+      <!-- Previous -->
       <div>
         <NuxtLink
           v-if="prev"
           :to="`/work/${prev.slug}`"
-          class="group flex flex-col gap-1"
+          class="case-nav-link"
+          :aria-label="`Previous case study: ${prev.title}`"
         >
-          <span class="text-xs font-medium uppercase tracking-widest text-[#888888]">← Previous</span>
-          <span class="text-sm text-[#0D0D0D] dark:text-[#F0F0F0] group-hover:text-accent dark:group-hover:text-accent transition-colors">
-            {{ prev.title }}
-          </span>
+          <span class="case-nav-label">← Previous</span>
+          <span class="case-nav-title">{{ prev.title }}</span>
         </NuxtLink>
       </div>
-      <div class="text-right">
+
+      <!-- Back to all work -->
+      <NuxtLink to="/" class="case-nav-all">All work</NuxtLink>
+
+      <!-- Next -->
+      <div>
         <NuxtLink
           v-if="next"
           :to="`/work/${next.slug}`"
-          class="group flex flex-col items-end gap-1"
+          class="case-nav-link case-nav-link--next"
+          :aria-label="`Next case study: ${next.title}`"
         >
-          <span class="text-xs font-medium uppercase tracking-widest text-[#888888]">Next →</span>
-          <span class="text-sm text-[#0D0D0D] dark:text-[#F0F0F0] group-hover:text-accent dark:group-hover:text-accent transition-colors">
-            {{ next.title }}
-          </span>
+          <span class="case-nav-label">Next →</span>
+          <span class="case-nav-title">{{ next.title }}</span>
         </NuxtLink>
       </div>
     </div>

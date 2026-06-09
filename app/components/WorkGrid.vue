@@ -6,9 +6,12 @@ const { data: projects } = await useAsyncData('projects', () =>
 
 <template>
   <section id="work" class="mx-auto max-w-5xl px-6 py-16">
-    <h2 class="mb-10 text-xs font-medium uppercase tracking-widest text-[#888888]">
-      Selected Work
+    <h2 class="mb-2 text-xs font-medium uppercase tracking-widest text-text-muted">
+      Trabalhos Selecionados
     </h2>
+    <p class="mb-10 text-sm text-text-secondary dark:text-text-muted max-w-xl">
+      Estudos de caso com narrativa completa — contexto, processo e resultado mensurável.
+    </p>
     <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
       <WorkCard
         v-for="project in projects"

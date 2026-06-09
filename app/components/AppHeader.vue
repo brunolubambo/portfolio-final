@@ -9,19 +9,22 @@ function toggleColorMode() {
 const mobileMenuOpen = ref(false)
 
 const navLinks = [
-  { label: 'Work', href: '/#work' },
-  { label: 'About', href: '/#about' },
-  { label: 'Contact', href: '/#contact' },
+  { label: 'Trabalhos', href: '/#work' },
+  { label: 'Sobre', href: '/#about' },
+  { label: 'Contato', href: '/#contact' },
 ]
 </script>
 
 <template>
-  <header class="sticky top-0 z-50 border-b border-[#2A2A2A] dark:border-[#2A2A2A] bg-[#FAFAFA]/95 dark:bg-[#0D0D0D]/95 backdrop-blur-sm">
-    <nav class="mx-auto flex max-w-5xl items-center justify-between px-6 py-4">
-      <!-- Logo -->
+  <header class="sticky top-0 z-50 border-b border-border dark:border-border-dark bg-bg/95 dark:bg-bg-dark/95 backdrop-blur-sm">
+    <nav
+      class="mx-auto flex max-w-5xl items-center justify-between px-6 py-4"
+      aria-label="Navegação principal"
+    >
       <NuxtLink
         to="/"
-        class="text-sm font-semibold tracking-tight text-[#0D0D0D] dark:text-[#F0F0F0] hover:text-accent dark:hover:text-accent transition-colors"
+        class="text-sm font-semibold tracking-tight text-text-primary dark:text-text-inverted hover:text-accent dark:hover:text-accent-light transition-colors"
+        aria-label="Bruno Lubambo — página inicial"
       >
         Bruno Lubambo
       </NuxtLink>
@@ -32,34 +35,31 @@ const navLinks = [
           v-for="link in navLinks"
           :key="link.href"
           :to="link.href"
-          class="text-sm text-[#666666] dark:text-[#888888] hover:text-[#0D0D0D] dark:hover:text-[#F0F0F0] transition-colors"
+          class="text-sm text-text-secondary dark:text-text-muted hover:text-text-primary dark:hover:text-text-inverted transition-colors"
         >
           {{ link.label }}
         </NuxtLink>
 
-        <!-- Dark/light toggle -->
         <button
-          :aria-label="isDark ? 'Switch to light mode' : 'Switch to dark mode'"
-          class="flex h-8 w-8 items-center justify-center rounded text-[#666666] dark:text-[#888888] hover:text-[#0D0D0D] dark:hover:text-[#F0F0F0] transition-colors"
+          :aria-label="isDark ? 'Mudar para modo claro' : 'Mudar para modo escuro'"
+          class="flex h-8 w-8 items-center justify-center rounded text-text-secondary dark:text-text-muted hover:text-text-primary dark:hover:text-text-inverted transition-colors"
           @click="toggleColorMode"
         >
-          <!-- Sun icon (shown in dark mode) -->
           <svg v-if="isDark" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <circle cx="12" cy="12" r="4"/>
             <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/>
           </svg>
-          <!-- Moon icon (shown in light mode) -->
           <svg v-else xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/>
           </svg>
         </button>
       </div>
 
-      <!-- Mobile: toggle + hamburger -->
+      <!-- Mobile controls -->
       <div class="flex items-center gap-3 md:hidden">
         <button
-          :aria-label="isDark ? 'Switch to light mode' : 'Switch to dark mode'"
-          class="flex h-8 w-8 items-center justify-center rounded text-[#666666] dark:text-[#888888]"
+          :aria-label="isDark ? 'Mudar para modo claro' : 'Mudar para modo escuro'"
+          class="flex h-8 w-8 items-center justify-center rounded text-text-secondary dark:text-text-muted"
           @click="toggleColorMode"
         >
           <svg v-if="isDark" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -72,8 +72,8 @@ const navLinks = [
         </button>
 
         <button
-          :aria-label="mobileMenuOpen ? 'Close menu' : 'Open menu'"
-          class="flex h-8 w-8 items-center justify-center rounded text-[#666666] dark:text-[#888888]"
+          :aria-label="mobileMenuOpen ? 'Fechar menu' : 'Abrir menu'"
+          class="flex h-8 w-8 items-center justify-center rounded text-text-secondary dark:text-text-muted"
           @click="mobileMenuOpen = !mobileMenuOpen"
         >
           <svg v-if="!mobileMenuOpen" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -87,18 +87,35 @@ const navLinks = [
     </nav>
 
     <!-- Mobile drawer -->
-    <div v-if="mobileMenuOpen" class="border-t border-[#2A2A2A] bg-[#FAFAFA] dark:bg-[#0D0D0D] px-6 py-4 md:hidden">
-      <ul class="flex flex-col gap-4">
-        <li v-for="link in navLinks" :key="link.href">
-          <NuxtLink
-            :to="link.href"
-            class="text-sm text-[#666666] dark:text-[#888888] hover:text-[#0D0D0D] dark:hover:text-[#F0F0F0] transition-colors"
-            @click="mobileMenuOpen = false"
-          >
-            {{ link.label }}
-          </NuxtLink>
-        </li>
-      </ul>
-    </div>
+    <Transition name="slide-down">
+      <div
+        v-if="mobileMenuOpen"
+        class="border-t border-border dark:border-border-dark bg-bg dark:bg-bg-dark px-6 py-4 md:hidden"
+      >
+        <ul class="flex flex-col gap-4">
+          <li v-for="link in navLinks" :key="link.href">
+            <NuxtLink
+              :to="link.href"
+              class="text-sm text-text-secondary dark:text-text-muted hover:text-text-primary dark:hover:text-text-inverted transition-colors"
+              @click="mobileMenuOpen = false"
+            >
+              {{ link.label }}
+            </NuxtLink>
+          </li>
+        </ul>
+      </div>
+    </Transition>
   </header>
 </template>
+
+<style scoped>
+.slide-down-enter-active,
+.slide-down-leave-active {
+  transition: all 0.2s ease;
+}
+.slide-down-enter-from,
+.slide-down-leave-to {
+  opacity: 0;
+  transform: translateY(-8px);
+}
+</style>
