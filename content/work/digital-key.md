@@ -3,8 +3,7 @@ title: "Digital Key"
 tagline: "Abstracting blockchain complexity to make urban mobility accessible to everyone"
 year: 2025
 area: "Product Design"
-cover: "/images/work/digital-key/elisyum-mark.png"
-coverDark: true
+cover: "/images/work/digital-key/app-mockup.png"
 order: 3
 slug: "digital-key"
 ---
@@ -121,3 +120,5 @@ Rather than explaining how blockchain works, the design focused on communicating
 - A/B test terminology and UI elements to optimise clarity and conversion
 - Conduct usability tests with executives and frequent travellers
 - Iterate based on findings before full production rollout
+
+<img src="/images/work/digital-key/elisyum-mark.png" alt="Elisyum logo mark" class="invert" />
