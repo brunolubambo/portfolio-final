@@ -35,6 +35,7 @@ useHead({
       :cover="project.cover ?? '/images/work/placeholder.jpg'"
       :year="project.year"
       :area="project.area"
+      :cover-dark="project.coverDark ?? false"
     />
     <CaseBody :project="project" />
     <CaseNav :current-order="project.order ?? 1" />

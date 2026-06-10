@@ -5,6 +5,7 @@ defineProps<{
   cover: string
   year: number | string
   area: string
+  coverDark?: boolean
 }>()
 </script>
 
@@ -33,7 +34,7 @@ defineProps<{
       <p class="case-tagline">{{ tagline }}</p>
 
       <!-- Cover -->
-      <div class="case-cover">
+      <div class="case-cover" :class="{ 'case-cover--dark': coverDark }">
         <NuxtImg
           :src="cover"
           :alt="`Cover image for ${title}`"

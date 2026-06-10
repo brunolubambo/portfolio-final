@@ -149,9 +149,9 @@ onUnmounted(() => {
     <header class="hero">
       <div class="wrap">
         <h1 class="reveal">
-          Bruno Lubambo <span class="spark"><svg><use href="#ic-spark" /></svg></span>
-          ux/ui designer <span class="spark"><svg><use href="#ic-spark" /></svg></span>
-          design systems <span class="spark"><svg><use href="#ic-spark" /></svg></span>
+          Bruno Lubambo <span class="spark spin"><svg><use href="#ic-spark" /></svg></span>
+          ux/ui designer <span class="spark spin"><svg><use href="#ic-spark" /></svg></span>
+          design systems <span class="spark spin"><svg><use href="#ic-spark" /></svg></span>
           mobile apps
         </h1>
         <p class="hero-sub reveal">

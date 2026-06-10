@@ -3,7 +3,8 @@ title: "Digital Key"
 tagline: "Abstracting blockchain complexity to make urban mobility accessible to everyone"
 year: 2025
 area: "Product Design"
-cover: "/images/work/digital-key/iphone-16.png"
+cover: "/images/work/digital-key/elisyum-mark.png"
+coverDark: true
 order: 3
 slug: "digital-key"
 ---
