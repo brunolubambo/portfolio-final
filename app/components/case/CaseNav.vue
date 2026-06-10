@@ -4,9 +4,9 @@ const props = defineProps<{
 }>()
 
 const projects = [
-  { order: 1, slug: 'harmonymind', title: 'HarmonyMind' },
+  { order: 1, slug: 'digital-key', title: 'Digital Key' },
   { order: 2, slug: 'dead-space', title: 'Dead Space — Diegetic UI' },
-  { order: 3, slug: 'digital-key', title: 'Digital Key' },
+  { order: 3, slug: 'harmonymind', title: 'HarmonyMind' },
   { order: 4, slug: 'policia-civil', title: 'Polícia Civil PB' },
 ]
 

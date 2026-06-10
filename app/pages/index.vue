@@ -262,23 +262,23 @@ onUnmounted(() => {
         </div>
 
         <div class="cards">
-          <!-- card 1 — HarmonyMind -->
+          <!-- card 1 — Digital Key -->
           <article class="card">
-            <NuxtLink to="/work/harmonymind" class="card-hit" aria-label="View case study: HarmonyMind" />
+            <NuxtLink to="/work/digital-key" class="card-hit" aria-label="View case study: Digital Key NFT Acquisition" />
             <div class="card-body">
               <div class="card-meta">
-                <span class="chip">2024</span>
+                <span class="chip">2025</span>
                 <span class="chip">product design</span>
               </div>
-              <h3 class="card-title">HarmonyMind — reducing access barriers to public mental health services.</h3>
-              <p class="card-role">Role — UX Designer & Researcher</p>
+              <h3 class="card-title">Simplifying digital key (NFT) acquisition for an urban mobility service.</h3>
+              <p class="card-role">Role — UX/Product Designer</p>
               <span class="card-link">
                 View case study
                 <span class="spark arrow"><svg><use href="#ic-arrow" /></svg></span>
               </span>
             </div>
             <div class="card-visual" aria-hidden="true">
-              <NuxtImg src="/images/work/harmonymind/cover.png" alt="HarmonyMind app screens" loading="lazy" />
+              <NuxtImg src="/images/work/digital-key/iphone-16.png" alt="Digital Key — VIP Key purchase flow on iPhone" loading="lazy" />
             </div>
           </article>
 
@@ -308,27 +308,27 @@ onUnmounted(() => {
             </div>
           </article>
 
-          <!-- card 3 — Digital Key -->
+          <!-- card 3 — HarmonyMind -->
           <article class="card">
-            <NuxtLink to="/work/digital-key" class="card-hit" aria-label="View case study: Digital Key NFT Acquisition" />
+            <NuxtLink to="/work/harmonymind" class="card-hit" aria-label="View case study: HarmonyMind" />
             <div class="card-body">
               <div class="card-meta">
-                <span class="chip">2025</span>
+                <span class="chip">2024</span>
                 <span class="chip">product design</span>
               </div>
-              <h3 class="card-title">Simplifying digital key (NFT) acquisition for an urban mobility service.</h3>
-              <p class="card-role">Role — UX/Product Designer</p>
+              <h3 class="card-title">HarmonyMind — reducing access barriers to public mental health services.</h3>
+              <p class="card-role">Role — UX Designer & Researcher</p>
               <span class="card-link">
                 View case study
                 <span class="spark arrow"><svg><use href="#ic-arrow" /></svg></span>
               </span>
             </div>
             <div class="card-visual" aria-hidden="true">
-              <NuxtImg src="/images/work/digital-key/iphone-16.png" alt="Digital Key — VIP Key purchase flow on iPhone" loading="lazy" />
+              <NuxtImg src="/images/work/harmonymind/cover.png" alt="HarmonyMind app screens" loading="lazy" />
             </div>
           </article>
 
-          <!-- card 5 — Polícia Civil -->
+          <!-- card 4 — Polícia Civil -->
           <article class="card">
             <NuxtLink to="/work/policia-civil" class="card-hit" aria-label="View case study: Polícia Civil PB Portal" />
             <div class="card-body">

@@ -4,7 +4,7 @@ tagline: "Reducing access barriers to public mental health services"
 year: 2024
 area: "Product Design"
 cover: "/images/work/harmonymind/cover.png"
-order: 1
+order: 3
 slug: "harmonymind"
 ---
 
