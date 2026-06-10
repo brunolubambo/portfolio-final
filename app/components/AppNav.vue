@@ -33,32 +33,33 @@ watch(() => route.path, () => {
     <!-- NAV -->
     <div class="nav-shell">
       <nav class="nav">
+        <!-- Desktop links (hidden on mobile) -->
         <div class="nav-left">
           <NuxtLink to="/" :class="['nav-link', { 'is-active': activePage === 'home' }]">Home</NuxtLink>
           <NuxtLink to="/about" :class="['nav-link', { 'is-active': activePage === 'about' }]">About</NuxtLink>
         </div>
+
+        <!-- Toggle (mobile only) — placed before brand in DOM so it appears first on mobile -->
+        <button
+          class="nav-toggle"
+          aria-label="Open menu"
+          @click="mobileMenuOpen = true"
+        >
+          <svg><use href="#ic-menu" /></svg>
+        </button>
+
+        <!-- Brand -->
         <NuxtLink to="/" class="nav-brand">
           <span class="spark spin"><svg><use href="#ic-spark" /></svg></span>
           Bruno Lubambo
         </NuxtLink>
+
+        <!-- CTA -->
         <div class="nav-right">
           <a href="mailto:brunolubamboadm@gmail.com" class="btn-cta">
             Let's talk
             <span class="spark"><svg><use href="#ic-spark" /></svg></span>
           </a>
-          <button
-            class="nav-toggle"
-            :aria-label="mobileMenuOpen ? 'Close menu' : 'Open menu'"
-            :aria-expanded="mobileMenuOpen"
-            @click="mobileMenuOpen = !mobileMenuOpen"
-          >
-            <span class="icon-bar" :class="{ hide: mobileMenuOpen }">
-              <svg><use href="#ic-menu" /></svg>
-            </span>
-            <span class="icon-close" :class="{ show: mobileMenuOpen }">
-              <svg><use href="#ic-close" /></svg>
-            </span>
-          </button>
         </div>
       </nav>
     </div>
@@ -76,6 +77,13 @@ watch(() => route.path, () => {
       <div class="drawer-head">
         <span class="spark spin" style="font-size:20px"><svg><use href="#ic-spark" /></svg></span>
         <span class="drawer-brand">Bruno Lubambo</span>
+        <button
+          class="drawer-close"
+          aria-label="Close menu"
+          @click="mobileMenuOpen = false"
+        >
+          <svg><use href="#ic-close" /></svg>
+        </button>
       </div>
       <div class="drawer-links">
         <NuxtLink to="/" :class="['drawer-link', { 'is-active': activePage === 'home' }]" @click="mobileMenuOpen = false">Home</NuxtLink>

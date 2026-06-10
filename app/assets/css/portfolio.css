@@ -116,6 +116,7 @@ img { display: block; max-width: 100%; }
 }
 .btn-cta:hover { transform: translateY(-2px); background: #fff; }
 .btn-cta .spark { width: 13px; height: 13px; }
+/* toggle hidden on desktop */
 .nav-toggle { display: none; }
 .mobile-menu { display: none; }
 
@@ -138,7 +139,16 @@ img { display: block; max-width: 100%; }
   font-weight: 600; font-size: 15.5px; letter-spacing: -.01em;
   margin-bottom: 48px;
 }
-.drawer-brand { color: var(--ink); }
+.drawer-brand { color: var(--ink); flex: 1; }
+.drawer-close {
+  width: 36px; height: 36px; flex: none;
+  display: inline-flex; align-items: center; justify-content: center;
+  background: transparent; color: var(--ink);
+  border: 1px solid var(--line); border-radius: 999px; cursor: pointer;
+  transition: background .2s var(--ease), transform .2s var(--ease);
+}
+.drawer-close:hover { background: var(--line); transform: rotate(90deg); }
+.drawer-close svg { width: 18px; height: 18px; }
 .drawer-links { display: flex; flex-direction: column; flex: 1; }
 .drawer-link {
   font-size: 28px; font-weight: 700; letter-spacing: -.02em;
@@ -511,26 +521,23 @@ img { display: block; max-width: 100%; }
 
 @media (max-width: 680px) {
   :root { --pad: 18px; --radius: 20px; }
-  .nav { grid-template-columns: 1fr auto; padding: 11px 12px 11px 18px; }
+  /* Mobile nav: [toggle] [brand] ... [cta]
+     nav-left (desktop links) is hidden → 3 remaining items in DOM order:
+     nav-toggle (auto) | nav-brand (1fr) | nav-right (auto) */
+  .nav {
+    grid-template-columns: auto 1fr auto;
+    gap: 10px;
+    padding: 10px 12px 10px 12px;
+  }
   .nav-left { display: none; }
   .nav-brand { justify-self: start; }
-  .nav-right { gap: 10px; }
+  .nav-right { gap: 0; }
   .nav-toggle {
     display: inline-flex; align-items: center; justify-content: center;
-    position: relative;
-    width: 42px; height: 42px; border-radius: 999px; border: 1px solid var(--line);
-    background: transparent; color: var(--ink); cursor: pointer;
-  }
-  .nav-toggle .icon-bar,
-  .nav-toggle .icon-close {
-    position: absolute; display: flex; align-items: center; justify-content: center;
+    width: 40px; height: 40px; border-radius: 999px; border: 1px solid var(--line);
+    background: transparent; color: var(--ink); cursor: pointer; flex: none;
   }
   .nav-toggle svg { width: 20px; height: 20px; }
-  /* hamburguer → X animation */
-  .nav-toggle .icon-bar   { transition: opacity .2s, transform .25s var(--ease); }
-  .nav-toggle .icon-close { opacity: 0; transform: rotate(-90deg); transition: opacity .2s, transform .25s var(--ease); }
-  .nav-toggle .icon-close.show { opacity: 1; transform: rotate(0deg); }
-  .nav-toggle .icon-bar.hide   { opacity: 0; transform: rotate(90deg); }
 
   .hero { padding: 48px 0 50px; }
   .logo { font-size: 19px; }
