@@ -3,12 +3,10 @@ title: "Digital Key"
 tagline: "Abstracting blockchain complexity to make urban mobility accessible to everyone"
 year: 2025
 area: "Product Design"
-cover: "/images/work/digital-key/cover.png"
+cover: "/images/work/digital-key/iphone-16.png"
 order: 3
 slug: "digital-key"
 ---
-
-<img src="/images/work/digital-key/cover.png" alt="Digital Key — VIP Key purchase flow overview" />
 
 ## Overview
 

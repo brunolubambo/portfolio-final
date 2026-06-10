@@ -53,7 +53,7 @@ The research also uncovered a critical design insight: **users with severe anxie
 
 ---
 
-<img src="/images/work/harmonymind/ui-main.png" alt="HarmonyMind — user journey map and research synthesis" />
+<img src="/images/work/harmonymind/mockup.png" alt="HarmonyMind — final mockup on device" />
 
 ## The Hardest Decision
 
@@ -113,5 +113,3 @@ After launch of the MVP in two pilot municipalities:
 - Average booking time: down from 11 minutes to **3 minutes 40 seconds**
 
 The project was presented at the Digital Health Innovation Forum and is currently expanding to additional municipalities.
-
-<img src="/images/work/harmonymind/mockup.png" alt="HarmonyMind — final mockup on device" />

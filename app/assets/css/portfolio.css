@@ -27,11 +27,11 @@
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; background: var(--bg); }
 
 body {
   font-family: var(--font);
-  background: var(--bg);
+  background: transparent;
   color: var(--ink);
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
@@ -51,16 +51,20 @@ img { display: block; max-width: 100%; }
 }
 
 /* ---- Diagonal texture (cursor-reveal) ---- */
-.texture {
-  position: absolute; inset: 0; pointer-events: none; z-index: 0;
+/* body::before is in the root stacking context at z-index:-1,
+   which is painted BEFORE the body background and ALL body content.
+   body is transparent so the html background shows through. */
+body::before {
+  content: '';
+  position: fixed; inset: 0; pointer-events: none;
+  z-index: -1;
   background: repeating-linear-gradient(
     125deg,
-    rgba(255,255,255,.10) 0px,
-    rgba(255,255,255,.10) 1px,
+    rgba(255,255,255,.18) 0px,
+    rgba(255,255,255,.18) 1px,
     transparent 1px,
     transparent 64px
   );
-  /* default -999px keeps texture hidden until cursor enters */
   mask-image: radial-gradient(
     circle 380px at var(--mx, -999px) var(--my, -999px),
     #000 0%, rgba(0,0,0,.5) 55%, transparent 100%
@@ -376,6 +380,7 @@ img { display: block; max-width: 100%; }
    CASE STUDY
    ============================================================ */
 .case-hero {
+  position: relative; overflow: hidden;
   padding: 56px 0 40px;
 }
 

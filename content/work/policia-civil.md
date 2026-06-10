@@ -3,7 +3,7 @@ title: "Polícia Civil PB"
 tagline: "Redesigning the digital infrastructure of law enforcement in Paraíba"
 year: 2025
 area: "UX/UI Design"
-cover: "/images/work/policia-civil/cover.png"
+cover: "/images/work/policia-civil/logo.png"
 order: 4
 slug: "policia-civil"
 ---

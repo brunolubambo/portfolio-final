@@ -22,7 +22,6 @@ const tools = [
   { id: 'slack',   name: 'Slack' },
 ]
 
-let _onMouseMove: ((e: MouseEvent) => void) | null = null
 let _scrollTriggerInstance: { kill: () => void } | null = null
 
 onMounted(async () => {
@@ -34,15 +33,6 @@ onMounted(async () => {
     { threshold: 0.12 }
   )
   document.querySelectorAll<HTMLElement>('.reveal').forEach((el) => io.observe(el))
-
-  _onMouseMove = (e: MouseEvent) => {
-    document.querySelectorAll<HTMLElement>('.texture').forEach(tex => {
-      const rect = tex.parentElement!.getBoundingClientRect()
-      tex.style.setProperty('--mx', (e.clientX - rect.left) + 'px')
-      tex.style.setProperty('--my', (e.clientY - rect.top) + 'px')
-    })
-  }
-  document.addEventListener('mousemove', _onMouseMove)
 
   // Stacked deck flip — triggered only when mouse is over the cards
   if (window.matchMedia('(hover: hover) and (min-width: 1025px)').matches) {
@@ -147,7 +137,6 @@ onMounted(async () => {
 })
 
 onUnmounted(() => {
-  if (_onMouseMove) document.removeEventListener('mousemove', _onMouseMove)
   if (_scrollTriggerInstance) _scrollTriggerInstance.kill()
 })
 </script>
@@ -158,7 +147,6 @@ onUnmounted(() => {
 
     <!-- HERO -->
     <header class="hero">
-      <div class="texture" aria-hidden="true" />
       <div class="wrap">
         <h1 class="reveal">
           Bruno Lubambo <span class="spark"><svg><use href="#ic-spark" /></svg></span>
@@ -336,7 +324,7 @@ onUnmounted(() => {
               </span>
             </div>
             <div class="card-visual" aria-hidden="true">
-              <NuxtImg src="/images/work/digital-key/iphone-pro.png" alt="Digital Key — VIP Key purchase flow on iPhone" loading="lazy" />
+              <NuxtImg src="/images/work/digital-key/iphone-16.png" alt="Digital Key — VIP Key purchase flow on iPhone" loading="lazy" />
             </div>
           </article>
 
@@ -356,7 +344,7 @@ onUnmounted(() => {
               </span>
             </div>
             <div class="card-visual" aria-hidden="true">
-              <NuxtImg src="/images/work/policia-civil/cover.png" alt="Polícia Civil portal — document management interface" loading="lazy" />
+              <NuxtImg src="/images/work/policia-civil/logo.png" alt="Polícia Civil da Paraíba — official badge" loading="lazy" />
             </div>
           </article>
         </div>
@@ -365,7 +353,6 @@ onUnmounted(() => {
 
     <!-- CONTACT -->
     <footer class="contact">
-      <div class="texture" aria-hidden="true" />
       <div class="wrap">
         <p class="label reveal">Get in touch at</p>
         <a href="mailto:brunolubamboadm@gmail.com" class="email reveal">
