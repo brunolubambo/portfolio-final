@@ -22,7 +22,10 @@ const tools = [
   { id: 'slack',   name: 'Slack' },
 ]
 
-onMounted(() => {
+let _onMouseMove: ((e: MouseEvent) => void) | null = null
+let _scrollTriggerInstance: { kill: () => void } | null = null
+
+onMounted(async () => {
   document.body.classList.add('anim-ready')
   const io = new IntersectionObserver(
     (entries) => entries.forEach((e) => {
@@ -31,6 +34,121 @@ onMounted(() => {
     { threshold: 0.12 }
   )
   document.querySelectorAll<HTMLElement>('.reveal').forEach((el) => io.observe(el))
+
+  _onMouseMove = (e: MouseEvent) => {
+    document.querySelectorAll<HTMLElement>('.texture').forEach(tex => {
+      const rect = tex.parentElement!.getBoundingClientRect()
+      tex.style.setProperty('--mx', (e.clientX - rect.left) + 'px')
+      tex.style.setProperty('--my', (e.clientY - rect.top) + 'px')
+    })
+  }
+  document.addEventListener('mousemove', _onMouseMove)
+
+  // Stacked deck flip — triggered only when mouse is over the cards
+  if (window.matchMedia('(hover: hover) and (min-width: 1025px)').matches) {
+    const { gsap } = await import('gsap')
+    const { ScrollTrigger } = await import('gsap/ScrollTrigger')
+    gsap.registerPlugin(ScrollTrigger)
+
+    const cards = gsap.utils.toArray<HTMLElement>('.card')
+    const cardsEl = document.querySelector<HTMLElement>('.cards')!
+    let current = 0
+    let animating = false
+    let cooldown = false   // absorbs trackpad inertia after last flip
+
+    // Stack: card 0 on top, cards behind slightly smaller
+    cards.forEach((card, i) => {
+      gsap.set(card, {
+        zIndex: cards.length - i,
+        transformPerspective: 1000,
+        transformOrigin: '50% 0%',
+      })
+      if (i > 0) gsap.set(card, { scale: 1 - i * 0.03, y: i * 8 })
+    })
+
+    const afterFlip = () => {
+      animating = false
+      cooldown = true
+      setTimeout(() => { cooldown = false }, 200) // absorb inertia without blocking next flip
+    }
+
+    const goNext = (): boolean => {
+      if (current >= cards.length - 1 || animating) return false
+      animating = true
+      gsap.to(cards[current], { rotateX: -90, opacity: 0, duration: 0.65, ease: 'power2.inOut' })
+      current++
+      gsap.to(cards[current], { scale: 1, y: 0, duration: 0.65, ease: 'power2.out', onComplete: afterFlip })
+      return true
+    }
+
+    const goPrev = (): boolean => {
+      if (current <= 0 || animating) return false
+      animating = true
+      gsap.to(cards[current], { scale: 1 - current * 0.03, y: current * 8, duration: 0.65, ease: 'power2.inOut' })
+      current--
+      gsap.to(cards[current], { rotateX: 0, opacity: 1, duration: 0.65, ease: 'power2.out', onComplete: afterFlip })
+      return true
+    }
+
+    // Track mouse position to know if it's over the cards area
+    let mx = 0, my = 0
+    const onMouseMove = (e: MouseEvent) => { mx = e.clientX; my = e.clientY }
+    document.addEventListener('mousemove', onMouseMove)
+
+    // Accumulate deltaY so one scroll gesture = one flip
+    let acc = 0
+    let accTimer: ReturnType<typeof setTimeout> | null = null
+    const FLIP_THRESHOLD = 60  // accumulated delta to trigger one flip
+
+    const onWheel = (e: WheelEvent) => {
+      const r = cardsEl.getBoundingClientRect()
+      const over = mx >= r.left && mx <= r.right && my >= r.top && my <= r.bottom
+      if (!over) return
+
+      const goingDown = e.deltaY > 0
+      const goingUp   = e.deltaY < 0
+      const atEnd     = current >= cards.length - 1
+      const atStart   = current <= 0
+
+      // Always block page scroll while inside the deck (except at true boundaries)
+      if ((goingDown && (!atEnd || animating || cooldown)) ||
+          (goingUp   && (!atStart || animating || cooldown))) {
+        e.preventDefault()
+      } else {
+        return // at boundary + not busy → let page scroll
+      }
+
+      if (animating) return // don't accumulate mid-flip
+
+      // Accumulate and reset after 150ms silence (new gesture = fresh start)
+      acc += e.deltaY
+      if (accTimer) clearTimeout(accTimer)
+      accTimer = setTimeout(() => { acc = 0 }, 150)
+
+      if (acc >= FLIP_THRESHOLD) {
+        acc = 0
+        goNext()
+      } else if (acc <= -FLIP_THRESHOLD) {
+        acc = 0
+        goPrev()
+      }
+    }
+
+    document.addEventListener('wheel', onWheel, { passive: false })
+
+    _scrollTriggerInstance = {
+      kill: () => {
+        document.removeEventListener('wheel', onWheel)
+        document.removeEventListener('mousemove', onMouseMove)
+        ScrollTrigger.getAll().forEach(t => t.kill())
+      },
+    }
+  }
+})
+
+onUnmounted(() => {
+  if (_onMouseMove) document.removeEventListener('mousemove', _onMouseMove)
+  if (_scrollTriggerInstance) _scrollTriggerInstance.kill()
 })
 </script>
 
@@ -157,7 +275,7 @@ onMounted(() => {
 
         <div class="cards">
           <!-- card 1 — HarmonyMind -->
-          <article class="card reveal">
+          <article class="card">
             <NuxtLink to="/work/harmonymind" class="card-hit" aria-label="View case study: HarmonyMind" />
             <div class="card-body">
               <div class="card-meta">
@@ -177,7 +295,7 @@ onMounted(() => {
           </article>
 
           <!-- card 2 — Dead Space -->
-          <article class="card reveal">
+          <article class="card">
             <NuxtLink to="/work/dead-space" class="card-hit" aria-label="View case study: Dead Space Diegetic UI Analysis" />
             <div class="card-body">
               <div class="card-meta">
@@ -203,7 +321,7 @@ onMounted(() => {
           </article>
 
           <!-- card 3 — Digital Key -->
-          <article class="card reveal">
+          <article class="card">
             <NuxtLink to="/work/digital-key" class="card-hit" aria-label="View case study: Digital Key NFT Acquisition" />
             <div class="card-body">
               <div class="card-meta">
@@ -223,7 +341,7 @@ onMounted(() => {
           </article>
 
           <!-- card 5 — Polícia Civil -->
-          <article class="card reveal">
+          <article class="card">
             <NuxtLink to="/work/policia-civil" class="card-hit" aria-label="View case study: Polícia Civil PB Portal" />
             <div class="card-body">
               <div class="card-meta">

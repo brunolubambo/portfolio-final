@@ -50,18 +50,25 @@ img { display: block; max-width: 100%; }
   padding: 0 var(--pad);
 }
 
-/* ---- Diagonal texture ---- */
+/* ---- Diagonal texture (cursor-reveal) ---- */
 .texture {
   position: absolute; inset: 0; pointer-events: none; z-index: 0;
   background: repeating-linear-gradient(
     125deg,
-    rgba(255,255,255,.035) 0px,
-    rgba(255,255,255,.035) 1px,
+    rgba(255,255,255,.10) 0px,
+    rgba(255,255,255,.10) 1px,
     transparent 1px,
     transparent 64px
   );
-  mask-image: linear-gradient(105deg, transparent 38%, #000 100%);
-  -webkit-mask-image: linear-gradient(105deg, transparent 38%, #000 100%);
+  /* default -999px keeps texture hidden until cursor enters */
+  mask-image: radial-gradient(
+    circle 380px at var(--mx, -999px) var(--my, -999px),
+    #000 0%, rgba(0,0,0,.5) 55%, transparent 100%
+  );
+  -webkit-mask-image: radial-gradient(
+    circle 380px at var(--mx, -999px) var(--my, -999px),
+    #000 0%, rgba(0,0,0,.5) 55%, transparent 100%
+  );
 }
 
 /* ============================================================
@@ -240,14 +247,22 @@ img { display: block; max-width: 100%; }
   color: var(--muted);
 }
 .section-head h2 { font-size: clamp(26px,3vw,40px); font-weight: 700; letter-spacing: -.02em; }
-.cards { display: flex; flex-direction: column; gap: 30px; }
+/* Cards: deck empilhado para carrossel 3D flip */
+.cards {
+  position: relative;
+  height: 480px;
+  overflow: visible;
+}
 .card {
-  position: relative; display: grid; grid-template-columns: 1fr 1.08fr; align-items: center;
-  gap: 24px; min-height: 430px;
+  position: absolute; inset: 0;
+  display: grid; grid-template-columns: 1fr 1.08fr; align-items: center;
+  gap: 24px;
   background: var(--card); border: 1px solid var(--line);
   border-radius: var(--radius); padding: 48px;
   overflow: hidden; isolation: isolate;
-  transition: border-color .4s var(--ease), transform .4s var(--ease), background .4s var(--ease);
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+  transition: border-color .4s var(--ease), background .4s var(--ease);
 }
 .card::after {
   content: ""; position: absolute; inset: 0; z-index: -1; opacity: 0;
@@ -513,7 +528,9 @@ img { display: block; max-width: 100%; }
    ============================================================ */
 @media (max-width: 1024px) {
   :root { --pad: 30px; }
-  .card { grid-template-columns: 1fr; gap: 30px; padding: 36px; }
+  /* Revert to column on tablet/mobile — no 3D deck */
+  .cards { height: auto; overflow: hidden; display: flex; flex-direction: column; gap: 30px; }
+  .card { position: relative; inset: auto; min-height: 0; grid-template-columns: 1fr; gap: 30px; padding: 36px; backface-visibility: unset; }
   .card-visual { min-height: 300px; order: 2; }
   .about-hero .wrap { grid-template-columns: 1fr; gap: 36px; }
   .about-grid { grid-template-columns: 1fr; gap: 24px; }
@@ -543,7 +560,7 @@ img { display: block; max-width: 100%; }
   .logo { font-size: 19px; }
   .logos-track { gap: 64px; }
   .work { padding: 60px 0 30px; }
-  .card { padding: 26px; min-height: 0; }
+  .card { padding: 26px; }
   .card-visual { min-height: 240px; }
   .contact { padding: 80px 0 56px; }
   .contact .email { font-size: clamp(16px, 5.2vw, 34px); gap: 10px; flex-wrap: wrap; }
