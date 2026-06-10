@@ -363,7 +363,7 @@ onUnmounted(() => {
           <div class="foot-socials">
             <a href="https://www.linkedin.com/in/brunolubambo/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
             <a href="https://www.behance.net/brunolubambo92" target="_blank" rel="noopener noreferrer">Behance</a>
-            <a href="https://read.cv/brunolubambo" target="_blank" rel="noopener noreferrer">Read.cv</a>
+            <a href="/Bruno_Lubambo_CV_ATS.pdf" target="_blank" rel="noopener noreferrer">Read.cv</a>
           </div>
           <p class="foot-copy">© {{ year }} Bruno Lubambo — made with care.</p>
         </div>
