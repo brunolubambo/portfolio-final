@@ -546,6 +546,7 @@ img { display: block; max-width: 100%; }
   .card { padding: 26px; min-height: 0; }
   .card-visual { min-height: 240px; }
   .contact { padding: 80px 0 56px; }
+  .contact .email { font-size: clamp(16px, 5.2vw, 34px); gap: 10px; flex-wrap: wrap; }
   .about-stats { grid-template-columns: 1fr; }
   .exp-item { grid-template-columns: 1fr; gap: 4px; }
   .exp-item .org { justify-self: start; }
