@@ -1,28 +1,29 @@
 <script setup lang="ts">
 import type { WorkCollectionItem } from '@nuxt/content'
 
-defineProps<{
-  project: WorkCollectionItem
-}>()
+defineProps<{ project: WorkCollectionItem }>()
 
 const lightboxSrc = ref<string | null>(null)
 const lightboxAlt = ref('')
+const bodyRef = ref<HTMLElement | null>(null)
 
-function onBodyClick(e: MouseEvent) {
-  const target = e.target as HTMLElement
-  if (target.tagName !== 'IMG') return
-  const img = target as HTMLImageElement
-  lightboxSrc.value = img.src
-  lightboxAlt.value = img.alt
-}
+onMounted(() => {
+  nextTick(() => {
+    bodyRef.value?.querySelectorAll<HTMLImageElement>('img').forEach(img => {
+      img.addEventListener('click', () => {
+        lightboxSrc.value = img.src
+        lightboxAlt.value = img.alt
+      })
+    })
+  })
+})
 </script>
 
 <template>
   <div>
-    <div class="case-body" @click="onBodyClick">
+    <div ref="bodyRef" class="case-body">
       <ContentRenderer :value="project" />
     </div>
-
     <ClientOnly>
       <ImageLightbox
         v-if="lightboxSrc"
