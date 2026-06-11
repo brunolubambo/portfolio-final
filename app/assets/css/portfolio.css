@@ -215,8 +215,8 @@ body::before {
   display: flex; align-items: center;
   gap: 100px; width: max-content;
   animation: marquee 20s linear infinite;
+  pointer-events: none;
 }
-.logos:hover .logos-track { animation-play-state: paused; }
 @keyframes marquee {
   from { transform: translateX(0); }
   to   { transform: translateX(-50%); }
@@ -231,10 +231,9 @@ body::before {
 .logo {
   display: flex; align-items: center; gap: 11px;
   color: var(--muted); font-weight: 600; font-size: 22px; letter-spacing: -.02em;
-  opacity: .65; transition: opacity .3s var(--ease), color .3s var(--ease);
+  opacity: .65;
   white-space: nowrap; user-select: none;
 }
-.logo:hover { opacity: 1; color: var(--ink); }
 .logo svg, .logo .spark { width: 26px; height: 26px; flex: none; }
 .logo--figma svg { width: 21px; height: 30px; }
 .logo--xd svg { width: 28px; height: 28px; }
