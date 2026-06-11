@@ -169,7 +169,7 @@ onUnmounted(() => {
         <template v-for="tool in tools" :key="tool.id">
           <span :class="`logo logo--${tool.id}`">
             <template v-if="tool.id === 'claude'">
-              <span class="spark"><svg><use href="#ic-spark" /></svg></span>
+              <img src="/images/tools/claude.png" alt="Claude" class="logo-img" />
             </template>
             <template v-else-if="tool.id === 'figma'">
               <svg viewBox="0 0 38 57" fill="none">
@@ -181,11 +181,7 @@ onUnmounted(() => {
               </svg>
             </template>
             <template v-else-if="tool.id === 'cursor'">
-              <svg viewBox="0 0 24 24" fill="none">
-                <rect width="24" height="24" rx="5" fill="#9b9b9c" />
-                <path d="M7 5h4.5L17 11.5V17l-3-3H7V5Z" fill="#1a1a1c" />
-                <path d="M13.5 14l3.5 3.5" stroke="#1a1a1c" stroke-width="2" stroke-linecap="round" />
-              </svg>
+              <img src="/images/tools/cursor.png" alt="Cursor" class="logo-img" />
             </template>
             <template v-else-if="tool.id === 'xd'">
               <svg viewBox="0 0 24 24" fill="none">
@@ -210,7 +206,7 @@ onUnmounted(() => {
         <template v-for="tool in tools" :key="`clone-${tool.id}`">
           <span :class="`logo logo--${tool.id}`">
             <template v-if="tool.id === 'claude'">
-              <span class="spark"><svg><use href="#ic-spark" /></svg></span>
+              <img src="/images/tools/claude.png" alt="Claude" class="logo-img" />
             </template>
             <template v-else-if="tool.id === 'figma'">
               <svg viewBox="0 0 38 57" fill="none">
@@ -222,11 +218,7 @@ onUnmounted(() => {
               </svg>
             </template>
             <template v-else-if="tool.id === 'cursor'">
-              <svg viewBox="0 0 24 24" fill="none">
-                <rect width="24" height="24" rx="5" fill="#9b9b9c" />
-                <path d="M7 5h4.5L17 11.5V17l-3-3H7V5Z" fill="#1a1a1c" />
-                <path d="M13.5 14l3.5 3.5" stroke="#1a1a1c" stroke-width="2" stroke-linecap="round" />
-              </svg>
+              <img src="/images/tools/cursor.png" alt="Cursor" class="logo-img" />
             </template>
             <template v-else-if="tool.id === 'xd'">
               <svg viewBox="0 0 24 24" fill="none">

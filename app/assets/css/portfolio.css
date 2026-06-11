@@ -239,6 +239,10 @@ body::before {
 .logo--figma svg { width: 21px; height: 30px; }
 .logo--xd svg { width: 28px; height: 28px; }
 .logo--cursor svg { width: 24px; height: 24px; }
+.logo-img {
+  width: 26px; height: 26px; flex: none; object-fit: contain;
+  filter: invert(1);
+}
 
 /* ============================================================
    WORK CARDS
