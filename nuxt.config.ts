@@ -44,6 +44,15 @@ export default defineNuxtConfig({
 
   nitro: {
     prerender: {
+      crawlLinks: true,
+      routes: [
+        '/',
+        '/about',
+        '/work/digital-key',
+        '/work/dead-space',
+        '/work/harmonymind',
+        '/work/policia-civil',
+      ],
       failOnError: false,
     },
   },
