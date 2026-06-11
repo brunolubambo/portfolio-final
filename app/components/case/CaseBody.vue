@@ -7,15 +7,19 @@ const lightboxSrc = ref<string | null>(null)
 const lightboxAlt = ref('')
 const bodyRef = ref<HTMLElement | null>(null)
 
+function handleClick(e: MouseEvent) {
+  const target = e.target as HTMLElement | null
+  const img = target?.closest('img') as HTMLImageElement | null
+  if (!img || !bodyRef.value?.contains(img)) return
+  lightboxSrc.value = img.currentSrc || img.src
+  lightboxAlt.value = img.alt
+}
+
 onMounted(() => {
-  nextTick(() => {
-    bodyRef.value?.querySelectorAll<HTMLImageElement>('img').forEach(img => {
-      img.addEventListener('click', () => {
-        lightboxSrc.value = img.src
-        lightboxAlt.value = img.alt
-      })
-    })
-  })
+  bodyRef.value?.addEventListener('click', handleClick)
+})
+onBeforeUnmount(() => {
+  bodyRef.value?.removeEventListener('click', handleClick)
 })
 </script>
 
