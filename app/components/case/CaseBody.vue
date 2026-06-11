@@ -18,14 +18,18 @@ function onBodyClick(e: MouseEvent) {
 </script>
 
 <template>
-  <div class="case-body" @click="onBodyClick">
-    <ContentRenderer :value="project" />
-  </div>
+  <div>
+    <div class="case-body" @click="onBodyClick">
+      <ContentRenderer :value="project" />
+    </div>
 
-  <ImageLightbox
-    v-if="lightboxSrc"
-    :src="lightboxSrc"
-    :alt="lightboxAlt"
-    @close="lightboxSrc = null"
-  />
+    <ClientOnly>
+      <ImageLightbox
+        v-if="lightboxSrc"
+        :src="lightboxSrc"
+        :alt="lightboxAlt"
+        @close="lightboxSrc = null"
+      />
+    </ClientOnly>
+  </div>
 </template>

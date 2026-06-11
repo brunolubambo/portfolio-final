@@ -105,17 +105,16 @@ onMounted(() => {
 </script>
 
 <template>
-  <Teleport to="body">
-    <div
-      class="lb-overlay"
-      role="dialog"
-      aria-modal="true"
-      :aria-label="alt || 'Image viewer'"
-      @click="onOverlayClick"
-      @mousemove="onMouseMove"
-      @mouseup="onMouseUp"
-      @mouseleave="onMouseUp"
-    >
+  <div
+    class="lb-overlay"
+    role="dialog"
+    aria-modal="true"
+    :aria-label="alt || 'Image viewer'"
+    @click="onOverlayClick"
+    @mousemove="onMouseMove"
+    @mouseup="onMouseUp"
+    @mouseleave="onMouseUp"
+  >
       <!-- Controls -->
       <div class="lb-controls" @click.stop>
         <button class="lb-btn" title="Zoom in (+)" aria-label="Zoom in" @click="zoomIn">
@@ -159,5 +158,4 @@ onMounted(() => {
       <!-- Hint -->
       <p class="lb-hint">Scroll to zoom · Drag to pan · Esc to close</p>
     </div>
-  </Teleport>
 </template>
