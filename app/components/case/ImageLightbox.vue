@@ -89,6 +89,9 @@ function onImgClick(e: MouseEvent) {
 }
 
 onMounted(() => {
+  // #region agent log
+  fetch('http://127.0.0.1:7625/ingest/3a04394b-c760-4aad-9ec6-2d17007308db',{method:'POST',headers:{'Content-Type':'application/json','X-Debug-Session-Id':'c3f535'},body:JSON.stringify({sessionId:'c3f535',location:'ImageLightbox.vue:onMounted',message:'lightbox mounted',data:{src:props.src?.slice(0,80)},timestamp:Date.now(),hypothesisId:'H3',runId:'post-fix'})}).catch(()=>{});
+  // #endregion
   const onKey = (e: KeyboardEvent) => {
     if (e.key === 'Escape') emit('close')
     if (e.key === '+' || e.key === '=') zoomIn()
