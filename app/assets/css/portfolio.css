@@ -314,10 +314,10 @@ body::before {
   color: var(--muted); margin-bottom: 26px;
 }
 .contact .email {
-  display: inline-flex; align-items: center; gap: 18px;
-  font-size: clamp(34px,6vw,82px); font-weight: 800; letter-spacing: -.03em; line-height: 1;
+  display: inline-flex; align-items: center; gap: 10px;
+  font-size: clamp(15px, 1.6vw, 18px); font-weight: 600; letter-spacing: 0; line-height: 1.2;
 }
-.contact .email .spark { width: .62em; height: .62em; color: var(--ink); }
+.contact .email .spark { width: 1.1em; height: 1.1em; color: var(--ink); }
 .contact .email .txt {
   text-decoration: underline; text-decoration-thickness: 2px;
   text-underline-offset: 8px; text-decoration-color: var(--line-2);
@@ -590,7 +590,7 @@ body::before {
   .card { padding: 26px; }
   .card-visual { min-height: 240px; }
   .contact { padding: 80px 0 56px; }
-  .contact .email { font-size: clamp(16px, 5.2vw, 34px); gap: 10px; flex-wrap: wrap; }
+  .contact .email { font-size: 15px; gap: 8px; }
   .about-stats { grid-template-columns: 1fr; }
   .exp-item { grid-template-columns: 1fr; gap: 4px; }
   .exp-item .org { justify-self: start; }
