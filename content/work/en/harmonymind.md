@@ -6,6 +6,7 @@ area: "Product Design"
 cover: "/images/work/harmonymind/cover.png"
 order: 3
 slug: "harmonymind"
+locale: "en"
 ---
 
 ## Context & Business Problem

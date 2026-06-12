@@ -1,8 +1,9 @@
 <script setup lang="ts">
-const props = defineProps<{
+defineProps<{
   activePage?: 'home' | 'about' | 'work'
 }>()
 
+const { t } = useLocale()
 const mobileMenuOpen = ref(false)
 const route = useRoute()
 
@@ -32,36 +33,41 @@ watch(() => route.path, () => {
 
     <!-- NAV -->
     <div class="nav-shell">
-      <nav class="nav">
-        <!-- Desktop links (hidden on mobile) -->
-        <div class="nav-left">
-          <NuxtLink to="/" :class="['nav-link', { 'is-active': activePage === 'home' }]">Home</NuxtLink>
-          <NuxtLink to="/about" :class="['nav-link', { 'is-active': activePage === 'about' }]">About</NuxtLink>
-        </div>
+      <div class="nav-bar-row">
+        <nav class="nav">
+          <!-- Desktop links (hidden on mobile) -->
+          <div class="nav-left">
+            <NuxtLink to="/" :class="['nav-link', { 'is-active': activePage === 'home' }]">{{ t.nav.home }}</NuxtLink>
+            <NuxtLink to="/about" :class="['nav-link', { 'is-active': activePage === 'about' }]">{{ t.nav.about }}</NuxtLink>
+          </div>
 
-        <!-- Toggle (mobile only) — placed before brand in DOM so it appears first on mobile -->
-        <button
-          class="nav-toggle"
-          aria-label="Open menu"
-          @click="mobileMenuOpen = true"
-        >
-          <svg><use href="#ic-menu" /></svg>
-        </button>
+          <!-- Toggle (mobile only) -->
+          <button
+            class="nav-toggle"
+            :aria-label="t.nav.openMenu"
+            @click="mobileMenuOpen = true"
+          >
+            <svg><use href="#ic-menu" /></svg>
+          </button>
 
-        <!-- Brand -->
-        <NuxtLink to="/" class="nav-brand">
-          <span class="spark spin"><svg><use href="#ic-spark" /></svg></span>
-          Bruno Lubambo
-        </NuxtLink>
+          <!-- Brand -->
+          <NuxtLink to="/" class="nav-brand">
+            <span class="spark spin"><svg><use href="#ic-spark" /></svg></span>
+            Bruno Lubambo
+          </NuxtLink>
 
-        <!-- CTA -->
-        <div class="nav-right">
-          <a href="mailto:brunolubamboadm@gmail.com" class="btn-cta">
-            Let's talk
-            <span class="spark"><svg><use href="#ic-spark" /></svg></span>
-          </a>
-        </div>
-      </nav>
+          <!-- CTA inside menu bar -->
+          <div class="nav-right">
+            <a href="mailto:brunolubamboadm@gmail.com" class="btn-cta">
+              {{ t.nav.cta }}
+              <span class="spark"><svg><use href="#ic-spark" /></svg></span>
+            </a>
+          </div>
+        </nav>
+
+        <!-- Language — outside menu bar -->
+        <LanguageSwitcher class="nav-lang-outside" />
+      </div>
     </div>
 
     <!-- Drawer overlay -->
@@ -73,25 +79,26 @@ watch(() => route.path, () => {
     />
 
     <!-- Drawer lateral esquerdo -->
-    <nav class="drawer" :class="{ open: mobileMenuOpen }" aria-label="Mobile navigation">
+    <nav class="drawer" :class="{ open: mobileMenuOpen }" :aria-label="t.nav.mobileNav">
       <div class="drawer-head">
         <span class="spark spin" style="font-size:20px"><svg><use href="#ic-spark" /></svg></span>
         <span class="drawer-brand">Bruno Lubambo</span>
         <button
           class="drawer-close"
-          aria-label="Close menu"
+          :aria-label="t.nav.closeMenu"
           @click="mobileMenuOpen = false"
         >
           <svg><use href="#ic-close" /></svg>
         </button>
       </div>
       <div class="drawer-links">
-        <NuxtLink to="/" :class="['drawer-link', { 'is-active': activePage === 'home' }]" @click="mobileMenuOpen = false">Home</NuxtLink>
-        <NuxtLink to="/about" :class="['drawer-link', { 'is-active': activePage === 'about' }]" @click="mobileMenuOpen = false">About</NuxtLink>
+        <NuxtLink to="/" :class="['drawer-link', { 'is-active': activePage === 'home' }]" @click="mobileMenuOpen = false">{{ t.nav.home }}</NuxtLink>
+        <NuxtLink to="/about" :class="['drawer-link', { 'is-active': activePage === 'about' }]" @click="mobileMenuOpen = false">{{ t.nav.about }}</NuxtLink>
       </div>
       <div class="drawer-footer">
+        <LanguageSwitcher />
         <a href="mailto:brunolubamboadm@gmail.com" class="btn-cta" @click="mobileMenuOpen = false">
-          Let's talk
+          {{ t.nav.cta }}
           <span class="spark"><svg><use href="#ic-spark" /></svg></span>
         </a>
       </div>
