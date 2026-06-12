@@ -51,7 +51,6 @@ export default defineNuxtConfig({
         '/work/digital-key',
         '/work/dead-space',
         '/work/harmonymind',
-        '/work/policia-civil',
       ],
       failOnError: false,
     },
@@ -64,7 +63,6 @@ export default defineNuxtConfig({
       '/work/harmonymind',
       '/work/dead-space',
       '/work/digital-key',
-      '/work/policia-civil',
     ],
   },
 })

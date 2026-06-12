@@ -319,26 +319,6 @@ onUnmounted(() => {
               <NuxtImg src="/images/work/harmonymind/cover.png" alt="HarmonyMind app screens" loading="lazy" />
             </div>
           </article>
-
-          <!-- card 4 — Polícia Civil -->
-          <article class="card">
-            <NuxtLink to="/work/policia-civil" class="card-hit" aria-label="View case study: Polícia Civil PB Portal" />
-            <div class="card-body">
-              <div class="card-meta">
-                <span class="chip">2025</span>
-                <span class="chip">gov · ux/ui</span>
-              </div>
-              <h3 class="card-title">Redesigning the digital infrastructure of law enforcement in Paraíba.</h3>
-              <p class="card-role">Role — UX/UI Designer at CODATA</p>
-              <span class="card-link">
-                View case study
-                <span class="spark arrow"><svg><use href="#ic-arrow" /></svg></span>
-              </span>
-            </div>
-            <div class="card-visual" aria-hidden="true">
-              <NuxtImg src="/images/work/policia-civil/logo.png" alt="Polícia Civil da Paraíba — official badge" loading="lazy" />
-            </div>
-          </article>
         </div>
       </div>
     </main>
