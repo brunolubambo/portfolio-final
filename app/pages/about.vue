@@ -1,15 +1,7 @@
 <script setup lang="ts">
 definePageMeta({ layout: 'minimal' })
 
-useHead({
-  title: 'About — Bruno Lubambo',
-  meta: [
-    { name: 'description', content: 'UX/UI Designer with 4 years of experience. Copywriting background, specialised in user research, prototyping and design systems for the public sector.' },
-    { property: 'og:title', content: 'About — Bruno Lubambo' },
-    { property: 'og:description', content: 'UX/UI Designer with 4 years of experience, autonomously leading 60+ government portals at CODATA.' },
-  ],
-})
-
+const { t } = useLocale()
 const year = ref(new Date().getFullYear())
 
 const skills = [
@@ -18,6 +10,15 @@ const skills = [
   'Accessibility (WCAG)', 'Figma', 'Adobe XD', 'OutSystems',
   'Wix Studio', 'WordPress', 'Copywriting', 'Government Digital',
 ]
+
+useHead(() => ({
+  title: t.value.about.metaTitle,
+  meta: [
+    { name: 'description', content: t.value.about.metaDescription },
+    { property: 'og:title', content: t.value.about.metaTitle },
+    { property: 'og:description', content: t.value.about.ogDescription },
+  ],
+}))
 
 onMounted(() => {
   document.body.classList.add('anim-ready')
@@ -41,19 +42,21 @@ onMounted(() => {
         <div>
           <span class="eyebrow reveal">
             <span class="spark"><svg><use href="#ic-spark" /></svg></span>
-            Product Designer
+            {{ t.about.eyebrow }}
           </span>
-          <h1 class="reveal">Hi, I'm<br>Bruno Lubambo</h1>
+          <h1 class="reveal">
+            <template v-for="(line, i) in t.about.title.split('\n')" :key="i">
+              <template v-if="i > 0"><br></template>{{ line }}
+            </template>
+          </h1>
           <p class="reveal">
-            UX/UI Designer with 4 years of experience and a background in copywriting.
-            Specialised in user research, prototyping and design systems —
-            with a focus on accessibility and public sector interfaces.
+            {{ t.about.intro }}
           </p>
         </div>
         <div class="about-portrait reveal">
           <img
             src="/images/portrait.jpg"
-            alt="Bruno Lubambo"
+            :alt="t.about.portraitAlt"
             class="portrait-img"
           />
         </div>
@@ -65,15 +68,15 @@ onMounted(() => {
       <div class="about-stats reveal">
         <div class="stat">
           <p class="n">4</p>
-          <p class="l">Years of experience</p>
+          <p class="l">{{ t.about.stats.years }}</p>
         </div>
         <div class="stat">
           <p class="n">60+</p>
-          <p class="l">Government portals led</p>
+          <p class="l">{{ t.about.stats.portals }}</p>
         </div>
         <div class="stat">
           <p class="n">WCAG AA</p>
-          <p class="l">Accessibility standard</p>
+          <p class="l">{{ t.about.stats.accessibility }}</p>
         </div>
       </div>
     </section>
@@ -85,27 +88,14 @@ onMounted(() => {
           <div>
             <span class="eyebrow reveal">
               <span class="spark"><svg><use href="#ic-spark" /></svg></span>
-              About me
+              {{ t.about.journeyEyebrow }}
             </span>
-            <h3 class="reveal">My journey</h3>
+            <h3 class="reveal">{{ t.about.journeyTitle }}</h3>
           </div>
           <div class="about-body">
-            <p class="reveal">
-              My design journey started with copywriting and advertising — which gave me a rare lens:
-              designs that are not only visually engaging but also easy to understand.
-              I learned to build experiences that communicate, not just look good.
-            </p>
-            <p class="reveal">
-              Over the years I've worked across user research, wireframing, prototyping and
-              usability testing using Figma, Adobe XD, Wix Studio and WordPress.
-              At KREATIVSTORM, I sharpened the ability to design with users at the centre of every decision.
-            </p>
-            <p class="reveal">
-              Since June 2025, I've been operating autonomously at <strong>CODATA</strong> (Paraíba, Brazil),
-              leading UX/UI implementation and optimisation across 60+ government portals.
-              I ensure alignment with official digital standards, bridge design and front-end development teams,
-              and strategically use Figma as the foundation for scalable design systems.
-            </p>
+            <p class="reveal">{{ t.about.journeyP1 }}</p>
+            <p class="reveal">{{ t.about.journeyP2 }}</p>
+            <p class="reveal">{{ t.about.journeyP3 }}</p>
           </div>
         </div>
       </div>
@@ -118,31 +108,20 @@ onMounted(() => {
           <div>
             <span class="eyebrow reveal">
               <span class="spark"><svg><use href="#ic-spark" /></svg></span>
-              Experience
+              {{ t.about.experienceEyebrow }}
             </span>
-            <h3 class="reveal">Career</h3>
+            <h3 class="reveal">{{ t.about.experienceTitle }}</h3>
           </div>
           <div>
             <div class="exp-list">
-              <div class="exp-item reveal">
-                <span class="yr">Jun 2025 — present</span>
-                <span class="role">UX/UI Designer</span>
-                <span class="org">CODATA</span>
-              </div>
-              <div class="exp-item reveal">
-                <span class="yr">2024</span>
-                <span class="role">UX/UI Designer</span>
-                <span class="org">ASCENDYnamic</span>
-              </div>
-              <div class="exp-item reveal">
-                <span class="yr">2023</span>
-                <span class="role">UX/UI Designer</span>
-                <span class="org">Freelance</span>
-              </div>
-              <div class="exp-item reveal">
-                <span class="yr">2022 — 2023</span>
-                <span class="role">UX/UI Design Training</span>
-                <span class="org">KREATIVSTORM</span>
+              <div
+                v-for="(item, i) in t.about.experience"
+                :key="i"
+                class="exp-item reveal"
+              >
+                <span class="yr">{{ item.yr }}</span>
+                <span class="role">{{ item.role }}</span>
+                <span class="org">{{ item.org }}</span>
               </div>
             </div>
           </div>
@@ -157,9 +136,9 @@ onMounted(() => {
           <div>
             <span class="eyebrow reveal">
               <span class="spark"><svg><use href="#ic-spark" /></svg></span>
-              Skills
+              {{ t.about.skillsEyebrow }}
             </span>
-            <h3 class="reveal">Toolbox</h3>
+            <h3 class="reveal">{{ t.about.skillsTitle }}</h3>
           </div>
           <div class="reveal">
             <div class="skills">
@@ -174,13 +153,13 @@ onMounted(() => {
     <footer class="contact">
       <div class="texture" aria-hidden="true" />
       <div class="wrap">
-        <p class="label reveal">Get in touch at</p>
+        <p class="label reveal">{{ t.home.contactLabel }}</p>
         <a href="mailto:brunolubamboadm@gmail.com" class="email reveal">
           <span class="spark spin"><svg><use href="#ic-spark" /></svg></span>
           <span class="txt">brunolubamboadm@gmail.com</span>
         </a>
         <div class="foot-row reveal">
-          <p class="foot-copy">© {{ year }} Bruno Lubambo — made with care.</p>
+          <p class="foot-copy">© {{ year }} Bruno Lubambo — {{ t.home.footCopy }}</p>
         </div>
       </div>
     </footer>

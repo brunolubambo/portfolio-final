@@ -4,25 +4,24 @@ definePageMeta({ layout: 'minimal' })
 const route = useRoute()
 const slug = route.params.slug as string
 
-const { data: project } = await useAsyncData(`work-${slug}`, () =>
-  queryCollection('work').where('slug', '=', slug).first()
-)
+const { project, pending } = await useWorkProject(slug)
 
-if (!project.value) {
+if (!pending.value && !project.value) {
   throw createError({ statusCode: 404, statusMessage: 'Project not found' })
 }
 
-useHead({
-  title: `${project.value.title} — Bruno Lubambo`,
-  meta: [
-    { name: 'description', content: project.value.tagline },
-    { property: 'og:title', content: `${project.value.title} — Bruno Lubambo` },
-    { property: 'og:description', content: project.value.tagline },
-    { property: 'og:image', content: project.value.cover ?? '/og-image.jpg' },
-    { property: 'og:url', content: `https://brunolubambo.com/work/${slug}` },
-  ],
-})
-
+useHead(() => ({
+  title: project.value ? `${project.value.title} — Bruno Lubambo` : 'Bruno Lubambo',
+  meta: project.value
+    ? [
+        { name: 'description', content: project.value.tagline },
+        { property: 'og:title', content: `${project.value.title} — Bruno Lubambo` },
+        { property: 'og:description', content: project.value.tagline },
+        { property: 'og:image', content: project.value.cover ?? '/og-image.jpg' },
+        { property: 'og:url', content: `https://brunolubambo.com/work/${slug}` },
+      ]
+    : [],
+}))
 </script>
 
 <template>

@@ -12,6 +12,7 @@ export const collections = {
       cover: z.string().optional(),
       order: z.number().optional(),
       slug: z.string().optional(),
+      locale: z.enum(['en', 'pt']).default('en'),
     }),
   }),
 }
