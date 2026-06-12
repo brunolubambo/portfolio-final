@@ -4,9 +4,9 @@ definePageMeta({ layout: 'minimal' })
 const route = useRoute()
 const slug = route.params.slug as string
 
-const { project } = await useWorkProject(slug)
+const { project, pending } = await useWorkProject(slug)
 
-if (!project.value) {
+if (!pending.value && !project.value) {
   throw createError({ statusCode: 404, statusMessage: 'Project not found' })
 }
 

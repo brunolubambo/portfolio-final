@@ -3,23 +3,24 @@ import type { WorkCollectionItem } from '@nuxt/content'
 export async function useWorkProject(slug: string) {
   const { locale } = useLocale()
 
-  const { data: project, pending } = await useAsyncData(
-    () => `work-${slug}-${locale.value}`,
-    async () => {
-      const localized = await queryCollection('work')
+  const { data: variants, pending } = await useAsyncData(
+    `work-${slug}`,
+    () =>
+      queryCollection('work')
         .where('slug', '=', slug)
-        .where('locale', '=', locale.value)
-        .first()
-
-      if (localized) return localized
-
-      return queryCollection('work')
-        .where('slug', '=', slug)
-        .where('locale', '=', 'en')
-        .first()
-    },
-    { watch: [locale] },
+        .all(),
+    { server: true },
   )
+
+  const project = computed<WorkCollectionItem | null>(() => {
+    const items = variants.value ?? []
+    return (
+      items.find((item) => item.locale === locale.value)
+      ?? items.find((item) => item.locale === 'en')
+      ?? items[0]
+      ?? null
+    )
+  })
 
   return { project, pending }
 }
