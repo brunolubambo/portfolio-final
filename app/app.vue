@@ -1,8 +1,5 @@
 <script setup lang="ts">
-const { locale } = useLocale()
-
 useHead(() => ({
-  htmlAttrs: { lang: locale.value === 'pt' ? 'pt-BR' : 'en' },
   titleTemplate: (title) => title?.endsWith('Bruno Lubambo') ? title : `${title} — Bruno Lubambo`,
   meta: [
     { name: 'description', content: 'Product Designer at the intersection of design and engineering. Portfolio of HarmonyMind, e-Leve and SIGRH.' },
@@ -32,6 +29,6 @@ useSchemaOrg([
 
 <template>
   <NuxtLayout>
-    <NuxtPage />
+    <NuxtPage :key="locale" />
   </NuxtLayout>
 </template>
