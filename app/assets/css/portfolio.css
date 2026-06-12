@@ -274,17 +274,31 @@ body::before {
    ============================================================ */
 .hero { position: relative; padding: 78px 0 64px; overflow: hidden; }
 .hero .wrap { position: relative; z-index: 1; }
-.hero h1 {
+.hero-title {
   font-weight: 800; letter-spacing: -.03em; line-height: 1.02;
-  font-size: clamp(40px, 7.1vw, 96px);
-  max-width: 14ch; text-wrap: balance;
+  font-size: clamp(44px, 7.4vw, 104px);
+  text-wrap: balance;
 }
-.hero h1 .spark { width: .72em; height: .72em; color: var(--ink); margin: 0 .04em; vertical-align: .02em; }
-.hero h1 .spark:nth-child(2) svg { animation-duration: 18s; }
-.hero h1 .spark:nth-child(3) svg { animation-duration: 24s; }
-.hero h1 .spark:nth-child(4) svg { animation-duration: 20s; }
+.hero-tagline {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.hero-tagline-line {
+  display: flex;
+  align-items: center;
+  gap: .12em;
+  font-weight: 700; letter-spacing: -.025em; line-height: 1.06;
+  font-size: clamp(28px, 4.8vw, 68px);
+  color: var(--ink-soft);
+}
+.hero-tagline-line .spark { width: .68em; height: .68em; color: var(--ink); flex-shrink: 0; }
+.hero-tagline-line:nth-child(1) .spark svg { animation-duration: 18s; }
+.hero-tagline-line:nth-child(2) .spark svg { animation-duration: 24s; }
+.hero-tagline-line:nth-child(3) .spark svg { animation-duration: 20s; }
 .hero-sub {
-  margin-top: 30px; font-size: clamp(16px,1.5vw,20px);
+  margin-top: 28px; font-size: clamp(16px,1.5vw,20px);
   color: var(--muted); max-width: 46ch; font-weight: 400;
 }
 .hero-sub a { color: var(--ink-soft); text-decoration: underline; text-underline-offset: 3px; text-decoration-color: var(--line-2); }

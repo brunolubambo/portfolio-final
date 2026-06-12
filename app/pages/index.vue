@@ -149,11 +149,13 @@ onUnmounted(() => {
     <!-- HERO -->
     <header class="hero">
       <div class="wrap">
-        <h1 class="reveal">
-          <template v-for="(line, i) in t.home.heroLines" :key="line">
-            <template v-if="i > 0"><span class="spark spin"><svg><use href="#ic-spark" /></svg></span> </template>{{ line }}
-          </template>
-        </h1>
+        <h1 class="hero-title reveal">{{ t.home.heroTitle }}</h1>
+        <h2 class="hero-tagline reveal">
+          <span v-for="line in t.home.heroTaglines" :key="line" class="hero-tagline-line">
+            <span class="spark spin"><svg><use href="#ic-spark" /></svg></span>
+            {{ line }}
+          </span>
+        </h2>
         <p class="hero-sub reveal">
           <a href="mailto:brunolubamboadm@gmail.com">{{ t.home.heroSubPrefix }}</a>
           {{ t.home.heroSubSuffix }}
