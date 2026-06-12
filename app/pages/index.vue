@@ -1,19 +1,18 @@
 <script setup lang="ts">
 definePageMeta({ layout: 'minimal' })
 
-const { t } = useLocale()
-const year = ref(new Date().getFullYear())
-
-useHead(() => ({
-  title: t.value.home.metaTitle,
+useHead({
+  title: 'Bruno Lubambo — Product Designer',
   meta: [
-    { name: 'description', content: t.value.home.metaDescription },
-    { property: 'og:title', content: t.value.home.metaTitle },
-    { property: 'og:description', content: t.value.home.ogDescription },
+    { name: 'description', content: 'Bruno Lubambo — product designer at the intersection of design and engineering.' },
+    { property: 'og:title', content: 'Bruno Lubambo — Product Designer' },
+    { property: 'og:description', content: 'Product designer, design systems and mobile apps.' },
     { property: 'og:url', content: 'https://brunolubambo.com' },
     { property: 'og:image', content: '/og-image.jpg' },
   ],
-}))
+})
+
+const year = ref(new Date().getFullYear())
 
 const tools = [
   { id: 'claude',  name: 'Claude' },
@@ -150,19 +149,20 @@ onUnmounted(() => {
     <header class="hero">
       <div class="wrap">
         <h1 class="reveal">
-          <template v-for="(line, i) in t.home.heroLines" :key="line">
-            <template v-if="i > 0"><span class="spark spin"><svg><use href="#ic-spark" /></svg></span> </template>{{ line }}
-          </template>
+          Bruno Lubambo <span class="spark spin"><svg><use href="#ic-spark" /></svg></span>
+          ux/ui designer <span class="spark spin"><svg><use href="#ic-spark" /></svg></span>
+          design systems <span class="spark spin"><svg><use href="#ic-spark" /></svg></span>
+          mobile apps
         </h1>
         <p class="hero-sub reveal">
-          <a href="mailto:brunolubamboadm@gmail.com">{{ t.home.heroSubPrefix }}</a>
-          {{ t.home.heroSubSuffix }}
+          <a href="mailto:brunolubamboadm@gmail.com">Get in touch here</a>
+          if you'd like to collaborate — or check out my work below.
         </p>
       </div>
     </header>
 
     <!-- LOGO STRIP — infinite marquee -->
-    <section class="logos" :aria-label="t.home.toolsAria">
+    <section class="logos" aria-label="Tools I use">
       <div class="logos-track" aria-hidden="true">
 
         <!-- set 1 -->
@@ -248,51 +248,51 @@ onUnmounted(() => {
         <div class="section-head reveal">
           <span class="eyebrow">
             <span class="spark"><svg><use href="#ic-spark" /></svg></span>
-            {{ t.home.workEyebrow }}
+            Selected work
           </span>
-          <h2>{{ t.home.workTitle }}</h2>
+          <h2>Case studies</h2>
         </div>
 
         <div class="cards">
           <!-- card 1 — Digital Key -->
           <article class="card">
-            <NuxtLink to="/work/digital-key" class="card-hit" :aria-label="t.home.cases.digitalKey.aria" />
+            <NuxtLink to="/work/digital-key" class="card-hit" aria-label="View case study: Digital Key NFT Acquisition" />
             <div class="card-body">
               <div class="card-meta">
                 <span class="chip">2025</span>
-                <span class="chip">{{ t.home.cases.digitalKey.chip }}</span>
+                <span class="chip">product design</span>
               </div>
-              <h3 class="card-title">{{ t.home.cases.digitalKey.title }}</h3>
-              <p class="card-role">{{ t.home.role }} — {{ t.home.cases.digitalKey.role }}</p>
+              <h3 class="card-title">Simplifying digital key (NFT) acquisition for an urban mobility service.</h3>
+              <p class="card-role">Role — UX/Product Designer</p>
               <span class="card-link">
-                {{ t.home.viewCase }}
+                View case study
                 <span class="spark arrow"><svg><use href="#ic-arrow" /></svg></span>
               </span>
             </div>
             <div class="card-visual" aria-hidden="true">
-              <NuxtImg src="/images/work/digital-key/iphone-16.png" :alt="t.home.cases.digitalKey.alt" loading="lazy" />
+              <NuxtImg src="/images/work/digital-key/iphone-16.png" alt="Digital Key — VIP Key purchase flow on iPhone" loading="lazy" />
             </div>
           </article>
 
           <!-- card 2 — Dead Space -->
           <article class="card">
-            <NuxtLink to="/work/dead-space" class="card-hit" :aria-label="t.home.cases.deadSpace.aria" />
+            <NuxtLink to="/work/dead-space" class="card-hit" aria-label="View case study: Dead Space Diegetic UI Analysis" />
             <div class="card-body">
               <div class="card-meta">
                 <span class="chip">2025</span>
-                <span class="chip">{{ t.home.cases.deadSpace.chip }}</span>
+                <span class="chip">ux research</span>
               </div>
-              <h3 class="card-title">{{ t.home.cases.deadSpace.title }}</h3>
-              <p class="card-role">{{ t.home.role }} — {{ t.home.cases.deadSpace.role }}</p>
+              <h3 class="card-title">How Dead Space eliminated the HUD to become one of gaming's most terrifying experiences.</h3>
+              <p class="card-role">Role — UX Researcher</p>
               <span class="card-link">
-                {{ t.home.viewCase }}
+                View case study
                 <span class="spark arrow"><svg><use href="#ic-arrow" /></svg></span>
               </span>
             </div>
             <div class="card-visual">
               <NuxtImg
                 src="/images/work/dead-space/cover.png"
-                :alt="t.home.cases.deadSpace.alt"
+                alt="Dead Space — Diegetic UI Analysis"
                 class="card-cover-img"
                 width="600"
                 height="400"
@@ -302,21 +302,21 @@ onUnmounted(() => {
 
           <!-- card 3 — HarmonyMind -->
           <article class="card">
-            <NuxtLink to="/work/harmonymind" class="card-hit" :aria-label="t.home.cases.harmonymind.aria" />
+            <NuxtLink to="/work/harmonymind" class="card-hit" aria-label="View case study: HarmonyMind" />
             <div class="card-body">
               <div class="card-meta">
                 <span class="chip">2024</span>
-                <span class="chip">{{ t.home.cases.harmonymind.chip }}</span>
+                <span class="chip">product design</span>
               </div>
-              <h3 class="card-title">{{ t.home.cases.harmonymind.title }}</h3>
-              <p class="card-role">{{ t.home.role }} — {{ t.home.cases.harmonymind.role }}</p>
+              <h3 class="card-title">HarmonyMind — reducing access barriers to public mental health services.</h3>
+              <p class="card-role">Role — UX Designer & Researcher</p>
               <span class="card-link">
-                {{ t.home.viewCase }}
+                View case study
                 <span class="spark arrow"><svg><use href="#ic-arrow" /></svg></span>
               </span>
             </div>
             <div class="card-visual" aria-hidden="true">
-              <NuxtImg src="/images/work/harmonymind/cover.png" :alt="t.home.cases.harmonymind.alt" loading="lazy" />
+              <NuxtImg src="/images/work/harmonymind/cover.png" alt="HarmonyMind app screens" loading="lazy" />
             </div>
           </article>
         </div>
@@ -326,13 +326,13 @@ onUnmounted(() => {
     <!-- CONTACT -->
     <footer class="contact">
       <div class="wrap">
-        <p class="label reveal">{{ t.home.contactLabel }}</p>
+        <p class="label reveal">Get in touch at</p>
         <a href="mailto:brunolubamboadm@gmail.com" class="email reveal">
           <span class="spark spin"><svg><use href="#ic-spark" /></svg></span>
           <span class="txt">brunolubamboadm@gmail.com</span>
         </a>
         <div class="foot-row reveal">
-          <p class="foot-copy">© {{ year }} Bruno Lubambo — {{ t.home.footCopy }}</p>
+          <p class="foot-copy">© {{ year }} Bruno Lubambo — made with care.</p>
         </div>
       </div>
     </footer>

@@ -3,15 +3,14 @@ defineProps<{
   activePage?: 'home' | 'about' | 'work'
 }>()
 
-const { t } = useLocale()
 const mobileMenuOpen = ref(false)
 const mobileLinksOpen = ref(false)
 const route = useRoute()
 
 const externalLinks = [
-  { id: 'linkedin' as const, href: 'https://www.linkedin.com/in/brunolubambo/' },
-  { id: 'behance' as const, href: 'https://www.behance.net/brunolubambo92' },
-  { id: 'readcv' as const, href: '/Bruno_Lubambo_CV_ATS.pdf' },
+  { label: 'LinkedIn', href: 'https://www.linkedin.com/in/brunolubambo/' },
+  { label: 'Behance', href: 'https://www.behance.net/brunolubambo92' },
+  { label: 'Read.cv', href: '/Bruno_Lubambo_CV_ATS.pdf' },
 ]
 
 watch(() => route.path, () => {
@@ -41,64 +40,59 @@ watch(() => route.path, () => {
 
     <!-- NAV -->
     <div class="nav-shell">
-      <div class="nav-bar-row">
-        <nav class="nav">
-          <!-- Desktop links (hidden on mobile) -->
-          <div class="nav-left">
-            <NuxtLink to="/" :class="['nav-link', { 'is-active': activePage === 'home' }]">{{ t.nav.home }}</NuxtLink>
-            <NuxtLink to="/about" :class="['nav-link', { 'is-active': activePage === 'about' }]">{{ t.nav.about }}</NuxtLink>
-            <div class="nav-dropdown">
-              <button
-                type="button"
-                class="nav-link nav-dropdown-trigger"
-                aria-haspopup="true"
-                :aria-label="t.nav.links"
+      <nav class="nav">
+        <!-- Desktop links (hidden on mobile) -->
+        <div class="nav-left">
+          <NuxtLink to="/" :class="['nav-link', { 'is-active': activePage === 'home' }]">Home</NuxtLink>
+          <NuxtLink to="/about" :class="['nav-link', { 'is-active': activePage === 'about' }]">About</NuxtLink>
+          <div class="nav-dropdown">
+            <button
+              type="button"
+              class="nav-link nav-dropdown-trigger"
+              aria-haspopup="true"
+              aria-label="Links"
+            >
+              Links
+            </button>
+            <div class="nav-dropdown-menu" role="menu">
+              <a
+                v-for="link in externalLinks"
+                :key="link.label"
+                :href="link.href"
+                class="nav-dropdown-item"
+                role="menuitem"
+                target="_blank"
+                rel="noopener noreferrer"
               >
-                {{ t.nav.links }}
-              </button>
-              <div class="nav-dropdown-menu" role="menu">
-                <a
-                  v-for="link in externalLinks"
-                  :key="link.id"
-                  :href="link.href"
-                  class="nav-dropdown-item"
-                  role="menuitem"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  {{ t.nav[link.id] }}
-                </a>
-              </div>
+                {{ link.label }}
+              </a>
             </div>
           </div>
+        </div>
 
-          <!-- Toggle (mobile only) -->
-          <button
-            class="nav-toggle"
-            :aria-label="t.nav.openMenu"
-            @click="mobileMenuOpen = true"
-          >
-            <svg><use href="#ic-menu" /></svg>
-          </button>
+        <!-- Toggle (mobile only) -->
+        <button
+          class="nav-toggle"
+          aria-label="Open menu"
+          @click="mobileMenuOpen = true"
+        >
+          <svg><use href="#ic-menu" /></svg>
+        </button>
 
-          <!-- Brand -->
-          <NuxtLink to="/" class="nav-brand">
-            <span class="spark spin"><svg><use href="#ic-spark" /></svg></span>
-            Bruno Lubambo
-          </NuxtLink>
+        <!-- Brand -->
+        <NuxtLink to="/" class="nav-brand">
+          <span class="spark spin"><svg><use href="#ic-spark" /></svg></span>
+          Bruno Lubambo
+        </NuxtLink>
 
-          <!-- CTA inside menu bar -->
-          <div class="nav-right">
-            <a href="mailto:brunolubamboadm@gmail.com" class="btn-cta">
-              {{ t.nav.cta }}
-              <span class="spark"><svg><use href="#ic-spark" /></svg></span>
-            </a>
-          </div>
-        </nav>
-
-        <!-- Language — outside menu bar -->
-        <LanguageSwitcher class="nav-lang-outside" />
-      </div>
+        <!-- CTA -->
+        <div class="nav-right">
+          <a href="mailto:brunolubamboadm@gmail.com" class="btn-cta">
+            Let's talk
+            <span class="spark"><svg><use href="#ic-spark" /></svg></span>
+          </a>
+        </div>
+      </nav>
     </div>
 
     <!-- Drawer overlay -->
@@ -110,21 +104,21 @@ watch(() => route.path, () => {
     />
 
     <!-- Drawer lateral esquerdo -->
-    <nav class="drawer" :class="{ open: mobileMenuOpen }" :aria-label="t.nav.mobileNav">
+    <nav class="drawer" :class="{ open: mobileMenuOpen }" aria-label="Mobile navigation">
       <div class="drawer-head">
         <span class="spark spin" style="font-size:20px"><svg><use href="#ic-spark" /></svg></span>
         <span class="drawer-brand">Bruno Lubambo</span>
         <button
           class="drawer-close"
-          :aria-label="t.nav.closeMenu"
+          aria-label="Close menu"
           @click="mobileMenuOpen = false"
         >
           <svg><use href="#ic-close" /></svg>
         </button>
       </div>
       <div class="drawer-links">
-        <NuxtLink to="/" :class="['drawer-link', { 'is-active': activePage === 'home' }]" @click="mobileMenuOpen = false">{{ t.nav.home }}</NuxtLink>
-        <NuxtLink to="/about" :class="['drawer-link', { 'is-active': activePage === 'about' }]" @click="mobileMenuOpen = false">{{ t.nav.about }}</NuxtLink>
+        <NuxtLink to="/" :class="['drawer-link', { 'is-active': activePage === 'home' }]" @click="mobileMenuOpen = false">Home</NuxtLink>
+        <NuxtLink to="/about" :class="['drawer-link', { 'is-active': activePage === 'about' }]" @click="mobileMenuOpen = false">About</NuxtLink>
         <div class="drawer-links-group">
           <button
             type="button"
@@ -132,28 +126,27 @@ watch(() => route.path, () => {
             :aria-expanded="mobileLinksOpen"
             @click="mobileLinksOpen = !mobileLinksOpen"
           >
-            {{ t.nav.links }}
+            Links
             <span class="drawer-chevron" :class="{ open: mobileLinksOpen }" aria-hidden="true">›</span>
           </button>
           <div v-show="mobileLinksOpen" class="drawer-sublinks">
             <a
               v-for="link in externalLinks"
-              :key="link.id"
+              :key="link.label"
               :href="link.href"
               class="drawer-sublink"
               target="_blank"
               rel="noopener noreferrer"
               @click="mobileMenuOpen = false"
             >
-              {{ t.nav[link.id] }}
+              {{ link.label }}
             </a>
           </div>
         </div>
       </div>
       <div class="drawer-footer">
-        <LanguageSwitcher />
         <a href="mailto:brunolubamboadm@gmail.com" class="btn-cta" @click="mobileMenuOpen = false">
-          {{ t.nav.cta }}
+          Let's talk
           <span class="spark"><svg><use href="#ic-spark" /></svg></span>
         </a>
       </div>

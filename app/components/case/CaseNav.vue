@@ -3,43 +3,44 @@ const props = defineProps<{
   currentOrder: number
 }>()
 
-const { t } = useLocale()
+const projects = [
+  { order: 1, slug: 'digital-key', title: 'Digital Key' },
+  { order: 2, slug: 'dead-space', title: 'Dead Space — Diegetic UI' },
+  { order: 3, slug: 'harmonymind', title: 'HarmonyMind' },
+]
 
-const projects = computed(() => [
-  { order: 1, slug: 'digital-key', title: t.value.case.projects.digitalKey },
-  { order: 2, slug: 'dead-space', title: t.value.case.projects.deadSpace },
-  { order: 3, slug: 'harmonymind', title: t.value.case.projects.harmonymind },
-])
-
-const prev = computed(() => projects.value.find(p => p.order === props.currentOrder - 1))
-const next = computed(() => projects.value.find(p => p.order === props.currentOrder + 1))
+const prev = computed(() => projects.find(p => p.order === props.currentOrder - 1))
+const next = computed(() => projects.find(p => p.order === props.currentOrder + 1))
 </script>
 
 <template>
   <nav class="case-nav" aria-label="Case study navigation">
     <div class="case-nav-row">
+      <!-- Previous -->
       <div>
         <NuxtLink
           v-if="prev"
           :to="`/work/${prev.slug}`"
           class="case-nav-link"
-          :aria-label="`${t.case.previous} ${prev.title}`"
+          :aria-label="`Previous case study: ${prev.title}`"
         >
-          <span class="case-nav-label">{{ t.case.previous }}</span>
+          <span class="case-nav-label">← Previous</span>
           <span class="case-nav-title">{{ prev.title }}</span>
         </NuxtLink>
       </div>
 
-      <NuxtLink to="/" class="case-nav-all">{{ t.case.allWork }}</NuxtLink>
+      <!-- Back to all work -->
+      <NuxtLink to="/" class="case-nav-all">All work</NuxtLink>
 
+      <!-- Next -->
       <div>
         <NuxtLink
           v-if="next"
           :to="`/work/${next.slug}`"
           class="case-nav-link case-nav-link--next"
-          :aria-label="`${t.case.next} ${next.title}`"
+          :aria-label="`Next case study: ${next.title}`"
         >
-          <span class="case-nav-label">{{ t.case.next }}</span>
+          <span class="case-nav-label">Next →</span>
           <span class="case-nav-title">{{ next.title }}</span>
         </NuxtLink>
       </div>

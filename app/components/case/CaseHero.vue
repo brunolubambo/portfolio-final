@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const props = defineProps<{
+defineProps<{
   title: string
   tagline: string
   cover: string
@@ -7,9 +7,6 @@ const props = defineProps<{
   area: string
   coverDark?: boolean
 }>()
-
-const { t } = useLocale()
-const coverAlt = computed(() => t.value.case.coverAlt.replace('{title}', props.title))
 </script>
 
 <template>
@@ -17,9 +14,9 @@ const coverAlt = computed(() => t.value.case.coverAlt.replace('{title}', props.t
     <div class="wrap">
       <!-- Breadcrumb -->
       <nav class="case-breadcrumb" aria-label="Breadcrumb">
-        <NuxtLink to="/">{{ t.case.home }}</NuxtLink>
+        <NuxtLink to="/">Home</NuxtLink>
         <span aria-hidden="true">/</span>
-        <NuxtLink to="/">{{ t.case.work }}</NuxtLink>
+        <NuxtLink to="/">Work</NuxtLink>
         <span aria-hidden="true">/</span>
         <span>{{ title }}</span>
       </nav>
@@ -40,7 +37,7 @@ const coverAlt = computed(() => t.value.case.coverAlt.replace('{title}', props.t
       <div class="case-cover" :class="{ 'case-cover--dark': coverDark }">
         <NuxtImg
           :src="cover"
-          :alt="coverAlt"
+          :alt="`Cover image for ${title}`"
           width="1200"
           height="675"
           priority

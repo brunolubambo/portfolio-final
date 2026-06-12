@@ -6,7 +6,6 @@ area: "Product Design"
 cover: "/images/work/digital-key/app-mockup.png"
 order: 1
 slug: "digital-key"
-locale: "en"
 ---
 
 ## Overview

@@ -6,7 +6,6 @@ area: "UX Research"
 cover: "/images/work/dead-space/cover.png"
 order: 2
 slug: "dead-space"
-locale: "en"
 ---
 
 ## Introduction: The Architecture of Immersion
