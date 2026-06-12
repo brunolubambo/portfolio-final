@@ -5,10 +5,18 @@ defineProps<{
 
 const { t } = useLocale()
 const mobileMenuOpen = ref(false)
+const mobileLinksOpen = ref(false)
 const route = useRoute()
+
+const externalLinks = [
+  { id: 'linkedin' as const, href: 'https://www.linkedin.com/in/brunolubambo/' },
+  { id: 'behance' as const, href: 'https://www.behance.net/brunolubambo92' },
+  { id: 'readcv' as const, href: '/Bruno_Lubambo_CV_ATS.pdf' },
+]
 
 watch(() => route.path, () => {
   mobileMenuOpen.value = false
+  mobileLinksOpen.value = false
 })
 </script>
 
@@ -39,6 +47,29 @@ watch(() => route.path, () => {
           <div class="nav-left">
             <NuxtLink to="/" :class="['nav-link', { 'is-active': activePage === 'home' }]">{{ t.nav.home }}</NuxtLink>
             <NuxtLink to="/about" :class="['nav-link', { 'is-active': activePage === 'about' }]">{{ t.nav.about }}</NuxtLink>
+            <div class="nav-dropdown">
+              <button
+                type="button"
+                class="nav-link nav-dropdown-trigger"
+                aria-haspopup="true"
+                :aria-label="t.nav.links"
+              >
+                {{ t.nav.links }}
+              </button>
+              <div class="nav-dropdown-menu" role="menu">
+                <a
+                  v-for="link in externalLinks"
+                  :key="link.id"
+                  :href="link.href"
+                  class="nav-dropdown-item"
+                  role="menuitem"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {{ t.nav[link.id] }}
+                </a>
+              </div>
+            </div>
           </div>
 
           <!-- Toggle (mobile only) -->
@@ -94,6 +125,30 @@ watch(() => route.path, () => {
       <div class="drawer-links">
         <NuxtLink to="/" :class="['drawer-link', { 'is-active': activePage === 'home' }]" @click="mobileMenuOpen = false">{{ t.nav.home }}</NuxtLink>
         <NuxtLink to="/about" :class="['drawer-link', { 'is-active': activePage === 'about' }]" @click="mobileMenuOpen = false">{{ t.nav.about }}</NuxtLink>
+        <div class="drawer-links-group">
+          <button
+            type="button"
+            class="drawer-link drawer-links-toggle"
+            :aria-expanded="mobileLinksOpen"
+            @click="mobileLinksOpen = !mobileLinksOpen"
+          >
+            {{ t.nav.links }}
+            <span class="drawer-chevron" :class="{ open: mobileLinksOpen }" aria-hidden="true">›</span>
+          </button>
+          <div v-show="mobileLinksOpen" class="drawer-sublinks">
+            <a
+              v-for="link in externalLinks"
+              :key="link.id"
+              :href="link.href"
+              class="drawer-sublink"
+              target="_blank"
+              rel="noopener noreferrer"
+              @click="mobileMenuOpen = false"
+            >
+              {{ t.nav[link.id] }}
+            </a>
+          </div>
+        </div>
       </div>
       <div class="drawer-footer">
         <LanguageSwitcher />

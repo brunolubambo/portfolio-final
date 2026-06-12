@@ -2,6 +2,10 @@ export default {
   nav: {
     home: 'Home',
     about: 'About',
+    links: 'Links',
+    linkedin: 'LinkedIn',
+    behance: 'Behance',
+    readcv: 'Read.cv',
     cta: "Let's talk",
     openMenu: 'Open menu',
     closeMenu: 'Close menu',
