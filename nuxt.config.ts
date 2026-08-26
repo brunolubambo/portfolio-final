@@ -52,6 +52,7 @@ export default defineNuxtConfig({
         '/work/digital-key',
         '/work/dead-space',
         '/work/harmonymind',
+        '/work/skill-tree-valhalla',
       ],
       failOnError: false,
     },
@@ -64,6 +65,7 @@ export default defineNuxtConfig({
       '/work/harmonymind',
       '/work/dead-space',
       '/work/digital-key',
+      '/work/skill-tree-valhalla',
     ],
   },
 })

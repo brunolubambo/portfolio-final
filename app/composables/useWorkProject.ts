@@ -4,12 +4,12 @@ export async function useWorkProject(slug: string) {
   const { locale } = useLocale()
 
   const { data: variants, pending } = await useAsyncData(
-    `work-${slug}`,
+    () => `work-${slug}-${locale.value}`,
     () =>
       queryCollection('work')
         .where('slug', '=', slug)
         .all(),
-    { server: true },
+    { watch: [locale] },
   )
 
   const project = computed<WorkCollectionItem | null>(() => {

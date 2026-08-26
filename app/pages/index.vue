@@ -321,6 +321,33 @@ onUnmounted(() => {
               <NuxtImg src="/images/work/harmonymind/cover.png" :alt="t.home.cases.harmonymind.alt" loading="lazy" />
             </div>
           </article>
+
+          <!-- card 4 — Skill Tree Valhalla -->
+          <article class="card">
+            <NuxtLink to="/work/skill-tree-valhalla" class="card-hit" :aria-label="t.home.cases.skillTreeValhalla.aria" />
+            <div class="card-body">
+              <div class="card-meta">
+                <span class="chip">2026</span>
+                <span class="chip">{{ t.home.cases.skillTreeValhalla.chip }}</span>
+              </div>
+              <h3 class="card-title">{{ t.home.cases.skillTreeValhalla.title }}</h3>
+              <p class="card-role">{{ t.home.role }} — {{ t.home.cases.skillTreeValhalla.role }}</p>
+              <span class="card-link">
+                {{ t.home.viewCase }}
+                <span class="spark arrow"><svg><use href="#ic-arrow" /></svg></span>
+              </span>
+            </div>
+            <div class="card-visual" aria-hidden="true">
+              <NuxtImg
+                src="/images/work/skill-tree-valhalla/cover.png"
+                :alt="t.home.cases.skillTreeValhalla.alt"
+                class="card-cover-img"
+                width="600"
+                height="400"
+                loading="lazy"
+              />
+            </div>
+          </article>
         </div>
       </div>
     </main>

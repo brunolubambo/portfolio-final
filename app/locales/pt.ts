@@ -49,6 +49,13 @@ export default {
         role: 'Designer UX & Pesquisador',
         alt: 'Telas do app HarmonyMind',
       },
+      skillTreeValhalla: {
+        aria: 'Ver estudo de caso: Skill Tree Valhalla',
+        chip: 'pesquisa ux',
+        title: 'Repensando a skill tree de Valhalla para restaurar a agência do jogador.',
+        role: 'Pesquisador UX / Game Design',
+        alt: "Visão geral da skill tree de Assassin's Creed Valhalla",
+      },
     },
   },
   about: {
@@ -91,6 +98,7 @@ export default {
       digitalKey: 'Digital Key',
       deadSpace: 'Dead Space — UI Diegética',
       harmonymind: 'HarmonyMind',
+      skillTreeValhalla: 'Skill Tree Valhalla',
     },
   },
 }

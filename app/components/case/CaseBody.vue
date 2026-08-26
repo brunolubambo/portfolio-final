@@ -12,6 +12,7 @@ function handleClick(e: MouseEvent) {
   const target = e.target as HTMLElement | null
   const img = target?.closest('img') as HTMLImageElement | null
   if (!img || !bodyRef.value?.contains(img)) return
+  e.preventDefault()
   lightboxSrc.value = img.currentSrc || img.src
   lightboxAlt.value = img.alt
 }
@@ -27,7 +28,7 @@ onBeforeUnmount(() => {
 <template>
   <div>
     <div ref="bodyRef" class="case-body">
-      <ContentRenderer :value="project" />
+      <ContentRenderer :key="`${project.slug}-${project.locale}`" :value="project" />
     </div>
     <CaseImageLightbox
       v-if="lightboxSrc"
