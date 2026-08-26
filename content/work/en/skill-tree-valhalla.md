@@ -4,7 +4,7 @@ tagline: "Rethinking progression architecture to restore player agency"
 year: 2026
 area: "UX Research / Game Design"
 cover: "/images/work/skill-tree-valhalla/cover.png"
-order: 4
+order: 2
 slug: "skill-tree-valhalla"
 locale: "en"
 ---

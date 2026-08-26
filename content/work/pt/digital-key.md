@@ -4,7 +4,7 @@ tagline: "Abstraindo a complexidade da blockchain para tornar a mobilidade urban
 year: 2025
 area: "Design de Produto"
 cover: "/images/work/digital-key/app-mockup.png"
-order: 1
+order: 3
 slug: "digital-key"
 locale: "pt"
 ---

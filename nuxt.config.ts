@@ -49,10 +49,10 @@ export default defineNuxtConfig({
       routes: [
         '/',
         '/about',
-        '/work/digital-key',
         '/work/dead-space',
-        '/work/harmonymind',
         '/work/skill-tree-valhalla',
+        '/work/digital-key',
+        '/work/harmonymind',
       ],
       failOnError: false,
     },
@@ -62,10 +62,10 @@ export default defineNuxtConfig({
     urls: [
       '/',
       '/about',
-      '/work/harmonymind',
       '/work/dead-space',
-      '/work/digital-key',
       '/work/skill-tree-valhalla',
+      '/work/digital-key',
+      '/work/harmonymind',
     ],
   },
 })

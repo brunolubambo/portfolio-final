@@ -4,7 +4,7 @@ tagline: "Repensando a arquitetura de progressão para restaurar a agência do j
 year: 2026
 area: "Pesquisa UX / Game Design"
 cover: "/images/work/skill-tree-valhalla/cover.png"
-order: 4
+order: 2
 slug: "skill-tree-valhalla"
 locale: "pt"
 ---

@@ -6,10 +6,10 @@ const props = defineProps<{
 const { t } = useLocale()
 
 const projects = computed(() => [
-  { order: 1, slug: 'digital-key', title: t.value.case.projects.digitalKey },
-  { order: 2, slug: 'dead-space', title: t.value.case.projects.deadSpace },
-  { order: 3, slug: 'harmonymind', title: t.value.case.projects.harmonymind },
-  { order: 4, slug: 'skill-tree-valhalla', title: t.value.case.projects.skillTreeValhalla },
+  { order: 1, slug: 'dead-space', title: t.value.case.projects.deadSpace },
+  { order: 2, slug: 'skill-tree-valhalla', title: t.value.case.projects.skillTreeValhalla },
+  { order: 3, slug: 'digital-key', title: t.value.case.projects.digitalKey },
+  { order: 4, slug: 'harmonymind', title: t.value.case.projects.harmonymind },
 ])
 
 const prev = computed(() => projects.value.find(p => p.order === props.currentOrder - 1))

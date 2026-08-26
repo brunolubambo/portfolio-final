@@ -256,27 +256,7 @@ onUnmounted(() => {
         </div>
 
         <div class="cards">
-          <!-- card 1 — Digital Key -->
-          <article class="card">
-            <NuxtLink to="/work/digital-key" class="card-hit" :aria-label="t.home.cases.digitalKey.aria" />
-            <div class="card-body">
-              <div class="card-meta">
-                <span class="chip">2025</span>
-                <span class="chip">{{ t.home.cases.digitalKey.chip }}</span>
-              </div>
-              <h3 class="card-title">{{ t.home.cases.digitalKey.title }}</h3>
-              <p class="card-role">{{ t.home.role }} — {{ t.home.cases.digitalKey.role }}</p>
-              <span class="card-link">
-                {{ t.home.viewCase }}
-                <span class="spark arrow"><svg><use href="#ic-arrow" /></svg></span>
-              </span>
-            </div>
-            <div class="card-visual" aria-hidden="true">
-              <NuxtImg src="/images/work/digital-key/iphone-16.png" :alt="t.home.cases.digitalKey.alt" loading="lazy" />
-            </div>
-          </article>
-
-          <!-- card 2 — Dead Space -->
+          <!-- card 1 — Dead Space -->
           <article class="card">
             <NuxtLink to="/work/dead-space" class="card-hit" :aria-label="t.home.cases.deadSpace.aria" />
             <div class="card-body">
@@ -302,27 +282,7 @@ onUnmounted(() => {
             </div>
           </article>
 
-          <!-- card 3 — HarmonyMind -->
-          <article class="card">
-            <NuxtLink to="/work/harmonymind" class="card-hit" :aria-label="t.home.cases.harmonymind.aria" />
-            <div class="card-body">
-              <div class="card-meta">
-                <span class="chip">2024</span>
-                <span class="chip">{{ t.home.cases.harmonymind.chip }}</span>
-              </div>
-              <h3 class="card-title">{{ t.home.cases.harmonymind.title }}</h3>
-              <p class="card-role">{{ t.home.role }} — {{ t.home.cases.harmonymind.role }}</p>
-              <span class="card-link">
-                {{ t.home.viewCase }}
-                <span class="spark arrow"><svg><use href="#ic-arrow" /></svg></span>
-              </span>
-            </div>
-            <div class="card-visual" aria-hidden="true">
-              <NuxtImg src="/images/work/harmonymind/cover.png" :alt="t.home.cases.harmonymind.alt" loading="lazy" />
-            </div>
-          </article>
-
-          <!-- card 4 — Skill Tree Valhalla -->
+          <!-- card 2 — Skill Tree Valhalla -->
           <article class="card">
             <NuxtLink to="/work/skill-tree-valhalla" class="card-hit" :aria-label="t.home.cases.skillTreeValhalla.aria" />
             <div class="card-body">
@@ -346,6 +306,46 @@ onUnmounted(() => {
                 height="400"
                 loading="lazy"
               />
+            </div>
+          </article>
+
+          <!-- card 3 — Digital Key -->
+          <article class="card">
+            <NuxtLink to="/work/digital-key" class="card-hit" :aria-label="t.home.cases.digitalKey.aria" />
+            <div class="card-body">
+              <div class="card-meta">
+                <span class="chip">2025</span>
+                <span class="chip">{{ t.home.cases.digitalKey.chip }}</span>
+              </div>
+              <h3 class="card-title">{{ t.home.cases.digitalKey.title }}</h3>
+              <p class="card-role">{{ t.home.role }} — {{ t.home.cases.digitalKey.role }}</p>
+              <span class="card-link">
+                {{ t.home.viewCase }}
+                <span class="spark arrow"><svg><use href="#ic-arrow" /></svg></span>
+              </span>
+            </div>
+            <div class="card-visual" aria-hidden="true">
+              <NuxtImg src="/images/work/digital-key/iphone-16.png" :alt="t.home.cases.digitalKey.alt" loading="lazy" />
+            </div>
+          </article>
+
+          <!-- card 4 — HarmonyMind -->
+          <article class="card">
+            <NuxtLink to="/work/harmonymind" class="card-hit" :aria-label="t.home.cases.harmonymind.aria" />
+            <div class="card-body">
+              <div class="card-meta">
+                <span class="chip">2024</span>
+                <span class="chip">{{ t.home.cases.harmonymind.chip }}</span>
+              </div>
+              <h3 class="card-title">{{ t.home.cases.harmonymind.title }}</h3>
+              <p class="card-role">{{ t.home.role }} — {{ t.home.cases.harmonymind.role }}</p>
+              <span class="card-link">
+                {{ t.home.viewCase }}
+                <span class="spark arrow"><svg><use href="#ic-arrow" /></svg></span>
+              </span>
+            </div>
+            <div class="card-visual" aria-hidden="true">
+              <NuxtImg src="/images/work/harmonymind/cover.png" :alt="t.home.cases.harmonymind.alt" loading="lazy" />
             </div>
           </article>
         </div>

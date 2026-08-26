@@ -4,7 +4,7 @@ tagline: "How eliminating the HUD made one of gaming's most terrifying experienc
 year: 2025
 area: "UX Research"
 cover: "/images/work/dead-space/cover.png"
-order: 2
+order: 1
 slug: "dead-space"
 locale: "en"
 ---

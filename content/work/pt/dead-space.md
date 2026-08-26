@@ -4,7 +4,7 @@ tagline: "Como a eliminação do HUD criou uma das experiências mais aterroriza
 year: 2025
 area: "Pesquisa UX"
 cover: "/images/work/dead-space/cover.png"
-order: 2
+order: 1
 slug: "dead-space"
 locale: "pt"
 ---
